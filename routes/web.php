@@ -13,10 +13,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
+});
+
+Route::group(['prefix' => 'lists', 'as' => 'listmanager.', 'namespace' => 'Listmanager'], function () {
+	
+	// Contacts
+	// Route::delete();
+	Route::Resource('contacts', 'ContactController');
+
+	// Tags
+	Route::Resource('tags', 'TagsController');
 });

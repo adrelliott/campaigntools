@@ -11,6 +11,24 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UserSeeder::class);
+    	
+        $this->call([
+            // Seed the databases that don't need direct relationships
+        	UserSeeder::class,
+            TagSeeder::class,
+            CategorySeeder::class,
+            SuggestionSeeder::class,
+            ListManagerSeeder::class,  // Mocks up a user base with contacts lists
+            InboxMagSeeder::class,  // Mocks up some magazines, with issues and articles
+            SubscriptionMagSeeder::class,  // Mocks up contact subscriptions to magazines
+
+            // LISTMANAGER: Create the assocciated records for the user
+            // ListManagerSeeder::class,
+            // ContactListSeeder::class,
+            // ContactSeeder::class,
+
+        ]);
+
+        // Create some pivot fields
     }
 }

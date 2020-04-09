@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Listmanager\ContactList;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -36,4 +37,17 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // One user can have many lists, but a list can belong to just one user
+    public function lists()
+    {
+        return $this->hasMany(ContactList::class);
+    }
+
+    // A contact belongs to a list, and a list belongs to a user
+    // We can list all contacts belonging to a user here
+    public function contacts()
+    {
+        // return $this->
+    }
 }
