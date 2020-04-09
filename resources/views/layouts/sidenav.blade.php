@@ -7,34 +7,40 @@
           Dashboard <span class="sr-only">(current)</span>
         </a>
       </li>
+
       <li class="nav-item">
-        <a class="nav-link" href="#">
-          <span data-feather="file"></span>
-          Orders
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">
-          <span data-feather="shopping-cart"></span>
-          Products
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="/contacts">
           <span data-feather="users"></span>
-          Customers
+          Contacts
         </a>
       </li>
+
+
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="/inboxmag">
+          <span data-feather="file"></span>
+          InboxMag
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/listswap">
+          <span data-feather="shopping-cart"></span>
+          ListSwap
+        </a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link" href="/emailgeeks">
           <span data-feather="bar-chart-2"></span>
-          Reports
+          EmailGeeks
         </a>
       </li>
+
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="/academy">
           <span data-feather="layers"></span>
-          Integrations
+          Academy
         </a>
       </li>
     </ul>
