@@ -8,10 +8,8 @@
   <p><strong>Description:</strong> {{ $segment->description }}</p>
   <hr>
   <h2>Related:</h2>
-  
-  <ul>
-   
-  </ul>
+  <p><strong>List owner:</strong> {{ $segment->owner }}</p>
 </div>
-
+<hr>
+{{ dump($segment) }}
 @endsection

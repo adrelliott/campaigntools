@@ -14,7 +14,7 @@ class CreateMagazinesTable extends Migration
     public function up()
     {
         Schema::create('magazines', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->string('magazine_name')->unique();
             $table->longText('magazine_description')->nullable();
             $table->longText('default_intro');

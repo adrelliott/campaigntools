@@ -14,12 +14,14 @@ class CreateSegmentsTable extends Migration
     public function up()
     {
         Schema::create('segments', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->string('segment_name')->nullable();
             $table->longText('segment_description')->nullable();
-            $table->unsignedBigInteger('user_id');
+            // $table->foreignId('user_id')->index()->nullable()->unsigned();
             $table->timestamps();
             $table->softDeletes();
+
+           
         });
     }
 

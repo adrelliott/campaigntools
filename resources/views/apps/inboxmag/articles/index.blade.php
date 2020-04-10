@@ -15,8 +15,8 @@
   	@foreach($articles as $article)
 		    <tr>
 		      <th scope="row">{{ $article->id }}</th>
-		      <td><a href="/lists/articles/{{ $article->id }}"{{ $article->article_name }}</a></td>
-		      <td>>{{ $article->link }}</td>
+		      <td><a href="/inboxmag/articles/{{ $article->id }}">{{ $article->article_name }}</a></td>
+		      <td>{{ $article->link }}</td>
           <td>{{ $article->issue_id }}</td>
           <td>{{ $article->suggestion_id }}</td>
 		    </tr>

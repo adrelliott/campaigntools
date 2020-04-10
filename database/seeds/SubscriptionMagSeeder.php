@@ -17,12 +17,12 @@ class SubscriptionMagSeeder extends Seeder
 
     	foreach ($users as $user) {
     		// Get all lists belonging to this user
-    		$lists = $user->lists;
+    		$segments = $user->segments;
     		$users_magazines = $magazines->where('user_id', $user->id);
 
     		// Now get all contacts on each list
-    		foreach ($lists as $list) {
-    			$contacts = $list->contacts;
+    		foreach ($segments as $segment) {
+    			$contacts = $segment->contacts;
 
     			// Now subscribe some contacts to some magazines
 	    		foreach ($contacts as $contact) {

@@ -13,5 +13,6 @@
    
   </ul>
 </div>
-
+<hr>
+{{ dump($category) }}
 @endsection

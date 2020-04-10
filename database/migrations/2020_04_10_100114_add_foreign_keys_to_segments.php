@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePermissionsTable extends Migration
+class AddForeignKeysToSegments extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class CreatePermissionsTable extends Migration
      */
     public function up()
     {
-        Schema::table('permissions', function (Blueprint $table) {
-            $table->id();
+        Schema::table('segments', function (Blueprint $table) {
+            $table->foreignId('user_id')->constrained();
         });
     }
 
@@ -25,8 +25,6 @@ class CreatePermissionsTable extends Migration
      */
     public function down()
     {
-        Schema::table('permissions', function (Blueprint $table) {
-            //
-        });
+        Schema::disableForeignKeyConstraints();
     }
 }

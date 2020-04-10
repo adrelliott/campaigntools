@@ -49,7 +49,7 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        return view('apps.listmanager.articles.show', compact('article'));
+        return view('apps.inboxmag.articles.show', compact('article'));
     }
 
     /**

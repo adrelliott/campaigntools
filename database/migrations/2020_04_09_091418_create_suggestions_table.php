@@ -14,11 +14,11 @@ class CreateSuggestionsTable extends Migration
     public function up()
     {
         Schema::create('suggestions', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->string('title')->nullable();
             $table->longText('excerpt')->nullable();
             $table->longText('link');
-            $table->string('author')->default('inboxmag');
+            $table->unsignedBigInteger('author_id')->default(1); // defaults to inboxmag
             $table->string('source')->default('pocket');
             $table->timestamps();
             $table->softDeletes();

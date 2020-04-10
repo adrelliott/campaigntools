@@ -2,7 +2,7 @@
 
 namespace App;
 
-use App\Listmanager\ContactList;
+use App\Listmanager\Segment;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -39,9 +39,9 @@ class User extends Authenticatable
     ];
 
     // One user can have many lists, but a list can belong to just one user
-    public function lists()
+    public function segments()
     {
-        return $this->hasMany(ContactList::class);
+        return $this->hasMany(Segment::class);
     }
 
     // A contact belongs to a list, and a list belongs to a user

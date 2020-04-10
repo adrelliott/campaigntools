@@ -15,5 +15,6 @@
    
   </ul>
 </div>
-
+<hr>
+{{ dump($issue) }}
 @endsection

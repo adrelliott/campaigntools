@@ -17,8 +17,8 @@ class Segment extends Model
 	}
 
 	// Get contacts on this list
-	public function contacts()
-	{
-		return $this-> belongsToMany(Contact::class, 'contact_list', 'list_id');
-	}
+	// public function contacts()
+	// {
+	// 	return $this-> belongsTo(Contact::class);
+	// }
 }

@@ -14,7 +14,7 @@ class CreateArticlesTable extends Migration
     public function up()
     {
         Schema::create('articles', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->string('article_name')->nullable();
             $table->longText('article_summary')->nullable();
             $table->string('link_text')->nullable();
@@ -22,8 +22,8 @@ class CreateArticlesTable extends Migration
             $table->string('article_type')->nullable();
             $table->integer('order')->nullable();
             $table->string('author')->default('inboxmag');
-            $table->unsignedBigInteger('issue_id');
-            $table->unsignedBigInteger('suggestion_id')->nullable();
+            $table->foreignId('issue_id');
+            $table->foreignId('suggestion_id')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
