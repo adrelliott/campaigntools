@@ -6,9 +6,9 @@ use App\Listmanager\Contact;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
 
-class ContactList extends Model
+class Segment extends Model
 {
-	public $table = 'lists';
+
     
     // A list belongs to just one user
 	public function listOwner()

@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Inboxmag;
+namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-
-use App\Inboxmag\Issue;
+use App\User;
 use Illuminate\Http\Request;
 
-class IssueController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +15,8 @@ class IssueController extends Controller
      */
     public function index()
     {
-        $issues = Issue::all();
-        return view('apps.inboxmag.issues.index', compact('issues'));
+        $users = User::all();
+        return view('apps.admin.users.index', compact('users'));
     }
 
     /**
@@ -44,21 +43,21 @@ class IssueController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Issue  $issue
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(Issue $issue)
+    public function show(User $user)
     {
-        return view('apps.inboxmag.issues.show', compact('issue'));
+        return view('apps.admin.users.show', compact('user'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Issue  $issue
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(Issue $issue)
+    public function edit(User $user)
     {
         //
     }
@@ -67,10 +66,10 @@ class IssueController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Issue  $issue
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Issue $issue)
+    public function update(Request $request, User $user)
     {
         //
     }
@@ -78,10 +77,10 @@ class IssueController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Issue  $issue
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Issue $issue)
+    public function destroy(User $user)
     {
         //
     }

@@ -19,13 +19,13 @@
   	@include('layouts.topnav')
 
   	<div class="container-fluid"><!-- .container-fluid -->
-  		<div class="row"><!-- .row -->
+  		<div class="row pt-4"><!-- .row -->
   			@include('layouts.sidenav')
-  			<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-            		@yield('main')
-          	</main>
-  		</div><!-- ./row -->
-  	</div><!-- ./container-fluid -->
+  			<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 pt-5">
+          @yield('main')
+        </main>
+      </div><!-- ./row -->
+    </div><!-- ./container-fluid -->
 
     <!-- Optional JavaScript -->
     <script src="https://unpkg.com/feather-icons"></script>

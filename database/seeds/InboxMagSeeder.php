@@ -22,7 +22,7 @@ class InboxMagSeeder extends Seeder
 
             // Now add some issues to each magazine
             foreach ($magazines as $magazine) {
-                $issues = factory(App\Inboxmag\Issue::class, 100)->create(['magazine_id' => $magazine->id]);
+                $issues = factory(App\Inboxmag\Issue::class, 10)->create(['magazine_id' => $magazine->id]);
 
                 // Now add 5 articles to each issue 
                 foreach ($issues as $issue) {
@@ -30,8 +30,13 @@ class InboxMagSeeder extends Seeder
                 
 	                foreach ($articles as $article) {
 	                	// Add a category
-	                	$random_categories = App\Inboxmag\Category::all()->random(3);
+	                	$random_categories = App\Inboxmag\Category::all()->random(2);
 	                	$article->categories()->saveMany($random_categories);
+
+                        // Associate with a suggestion
+                        // $suggestion = App\Inboxmag\Suggestion::all()->random(1);
+                        // var_dump($suggestion->first());
+                        // $article->suggestion()->save($suggestion->first());
 	                }
             	}
         	}  

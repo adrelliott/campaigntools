@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateListsTable extends Migration
+class CreateSegmentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateListsTable extends Migration
      */
     public function up()
     {
-        Schema::create('lists', function (Blueprint $table) {
+        Schema::create('segments', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('list_name')->nullable();
-            $table->longText('list_description')->nullable();
+            $table->string('segment_name')->nullable();
+            $table->longText('segment_description')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
             $table->softDeletes();
@@ -31,6 +31,6 @@ class CreateListsTable extends Migration
     public function down()
     {
         Schema::disableForeignKeyConstraints();
-        Schema::dropIfExists('lists');
+        Schema::dropIfExists('segments');
     }
 }

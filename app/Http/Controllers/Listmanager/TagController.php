@@ -15,7 +15,8 @@ class TagController extends Controller
      */
     public function index()
     {
-        //
+        $tags = Tag::all();
+        return view('apps.listmanager.tags.index', compact('tags'));
     }
 
     /**
@@ -25,7 +26,8 @@ class TagController extends Controller
      */
     public function create()
     {
-        //
+        // $tags = Tag::all()->pluck('tag_name', 'id');
+        return view('apps.listmanager.tags.create');
     }
 
     /**
@@ -42,18 +44,18 @@ class TagController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Tag  $tag
+     * @param  \App\Listmanager\Tag  $tag
      * @return \Illuminate\Http\Response
      */
     public function show(Tag $tag)
     {
-        //
+        return view('apps.listmanager.tags.show', compact('tag'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Tag  $tag
+     * @param  \App\Listmanager\Tag  $tag
      * @return \Illuminate\Http\Response
      */
     public function edit(Tag $tag)
@@ -65,7 +67,7 @@ class TagController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Tag  $tag
+     * @param  \App\Listmanager\Tag  $tag
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Tag $tag)
@@ -76,7 +78,7 @@ class TagController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Tag  $tag
+     * @param  \App\Listmanager\Tag  $tag
      * @return \Illuminate\Http\Response
      */
     public function destroy(Tag $tag)

@@ -23,6 +23,7 @@ class CreateArticlesTable extends Migration
             $table->integer('order')->nullable();
             $table->string('author')->default('inboxmag');
             $table->unsignedBigInteger('issue_id');
+            $table->unsignedBigInteger('suggestion_id')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

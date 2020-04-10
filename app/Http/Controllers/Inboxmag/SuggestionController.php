@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Inboxmag;
 
-use App\Suggestion;
+use App\Http\Controllers\Controller;
+use App\Inboxmag\Suggestion;
 use Illuminate\Http\Request;
 
 class SuggestionController extends Controller
@@ -14,7 +15,8 @@ class SuggestionController extends Controller
      */
     public function index()
     {
-        //
+        $suggestions = Suggestion::all();
+        return view('apps.inboxmag.suggestions.index', compact('suggestions'));
     }
 
     /**
@@ -41,18 +43,18 @@ class SuggestionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Suggestion  $suggestion
+     * @param  \App\Inboxmag\Suggestion  $suggestion
      * @return \Illuminate\Http\Response
      */
     public function show(Suggestion $suggestion)
     {
-        //
+        return view('apps.inboxmag.suggestions.show', compact('suggestion'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Suggestion  $suggestion
+     * @param  \App\Inboxmag\Suggestion  $suggestion
      * @return \Illuminate\Http\Response
      */
     public function edit(Suggestion $suggestion)
@@ -64,7 +66,7 @@ class SuggestionController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Suggestion  $suggestion
+     * @param  \App\Inboxmag\Suggestion  $suggestion
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Suggestion $suggestion)
@@ -75,7 +77,7 @@ class SuggestionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Suggestion  $suggestion
+     * @param  \App\Inboxmag\Suggestion  $suggestion
      * @return \Illuminate\Http\Response
      */
     public function destroy(Suggestion $suggestion)

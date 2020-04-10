@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Inboxmag;
+namespace App\Http\Controllers\Listmanager;
 
 use App\Http\Controllers\Controller;
-
-use App\Inboxmag\Issue;
+use App\Listmanager\Segment;
 use Illuminate\Http\Request;
 
-class IssueController extends Controller
+class SegmentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +15,8 @@ class IssueController extends Controller
      */
     public function index()
     {
-        $issues = Issue::all();
-        return view('apps.inboxmag.issues.index', compact('issues'));
+        $segments = Segment::all();
+        return view('apps.listmanager.segments.index', compact('segments'));
     }
 
     /**
@@ -27,7 +26,8 @@ class IssueController extends Controller
      */
     public function create()
     {
-        //
+        // $tags = Tag::all()->pluck('tag_name', 'id');
+        return view('apps.listmanager.segments.create');
     }
 
     /**
@@ -44,33 +44,34 @@ class IssueController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Issue  $issue
+     * @param  \App\Listmanager\Segment  $segment
      * @return \Illuminate\Http\Response
      */
-    public function show(Issue $issue)
+    public function show(Segment $segment)
     {
-        return view('apps.inboxmag.issues.show', compact('issue'));
+        return view('apps.listmanager.segments.show', compact('segment'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Issue  $issue
+     * @param  \App\Listmanager\Segment  $segment
      * @return \Illuminate\Http\Response
      */
-    public function edit(Issue $issue)
+    public function edit(Segment $segment)
     {
-        //
+        // $tags = Tag::all()->pluck('tag_name', 'id');
+        return view('apps.listmanager.segments.edit', compact('segment'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Issue  $issue
+     * @param  \App\Listmanager\Segment  $segment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Issue $issue)
+    public function update(Request $request, Segment $segment)
     {
         //
     }
@@ -78,10 +79,10 @@ class IssueController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Issue  $issue
+     * @param  \App\Listmanager\Segment  $segment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Issue $issue)
+    public function destroy(Segment $segment)
     {
         //
     }

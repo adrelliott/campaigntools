@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class ListSeeder extends Seeder
+class SegmentSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,11 +13,11 @@ class ListSeeder extends Seeder
     {
     	// select a user
     	$users = App\User::all();
-dd($users);
-    	// Add 3 lists for each user
+
+    	// Add 3 lists/segments for each user
     	foreach ($users as $user) {
-    		$lists = factory(App\Listmanager\Contactlist::class, 3)->create();
-    		$user->belongsToList()->saveMany($lists);
+    		$segments = factory(App\Listmanager\Segment::class, 3)->create();
+    		$user->belongsToSegment()->saveMany($segments);
     	}
         
     }

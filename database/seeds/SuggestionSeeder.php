@@ -11,6 +11,6 @@ class SuggestionSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Inboxmag\Suggestion::class, 500)->create();
+        factory(App\Inboxmag\Suggestion::class, 50)->create();
     }
 }

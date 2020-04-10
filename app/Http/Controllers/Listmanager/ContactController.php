@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Listmanager;
 
 use App\Http\Controllers\Controller;
 use App\Listmanager\Contact;
+use App\Listmanager\Segment;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
@@ -15,7 +16,8 @@ class ContactController extends Controller
      */
     public function index()
     {
-        return view('apps.listmanager.contacts.index');
+        $contacts = Contact::all();
+        return view('apps.listmanager.contacts.index', compact('contacts'));
     }
 
     /**
@@ -25,7 +27,9 @@ class ContactController extends Controller
      */
     public function create()
     {
-        return view('apps.listmanager.contacts.create');
+        $tags = Tag::all()->pluck('tag_name', 'id');
+        $segments = Segment::all()->pluck('segment_name', 'id');
+        return view('apps.listmanager.contacts.create', compact('tags', 'segments'));
     }
 
     /**
@@ -47,7 +51,7 @@ class ContactController extends Controller
      */
     public function show(Contact $contact)
     {
-        return view('apps.listmanager.contacts.show');
+        return view('apps.listmanager.contacts.show', compact('contact'));
     }
 
     /**
@@ -58,7 +62,9 @@ class ContactController extends Controller
      */
     public function edit(Contact $contact)
     {
-        return view('apps.listmanager.contacts.edit');
+        $tags = Tag::all()->pluck('tag_name', 'id');
+        $segments = Segment::all()->pluck('segment_name', 'id');
+        return view('apps.listmanager.contacts.edit', compact('tags', 'segments'));
     }
 
     /**

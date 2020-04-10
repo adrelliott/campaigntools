@@ -27,12 +27,31 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 });
 
-Route::group(['prefix' => 'lists', 'as' => 'listmanager.', 'namespace' => 'Listmanager'], function () {
-	
-	// Contacts
+
+Route::group(['prefix' => 'listmanager', 'as' => 'listmanager.', 'namespace' => 'Listmanager'], function () {
+
 	// Route::delete();
 	Route::Resource('contacts', 'ContactController');
-
-	// Tags
-	Route::Resource('tags', 'TagsController');
+	Route::Resource('segments', 'SegmentController');
+	Route::Resource('tags', 'TagController');
 });
+Route::group(['prefix' => 'inboxmag', 'as' => 'inboxmag.', 'namespace' => 'Inboxmag'], function () {
+
+	// Route::delete();
+	Route::Resource('magazines', 'MagazineController');
+	Route::Resource('issues', 'IssueController');
+	Route::Resource('articles', 'ArticleController');
+	Route::Resource('categories', 'CategoryController');
+	Route::Resource('suggestions', 'SuggestionController');
+});
+
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Auth'], function () {
+
+	// Route::delete();
+	Route::Resource('users', 'UserController');
+});
+
+
+
+
+

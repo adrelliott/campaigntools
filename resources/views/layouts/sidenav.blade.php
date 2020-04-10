@@ -1,18 +1,47 @@
-<nav class="col-md-2 d-none d-md-block bg-light sidebar">
+<nav class="col-md-2 d-none d-md-block bg-light sidebar pt-4">
   <div class="sidebar-sticky">
     <ul class="nav flex-column">
       <li class="nav-item">
-        <a class="nav-link active" href="#">
+        <a class="nav-link active" href="/dashboard">
           <span data-feather="home"></span>
           Dashboard <span class="sr-only">(current)</span>
         </a>
+        <ul class="">
+          <li class="nav-item">
+            <a href="/admin/users">All Users</a>
+          </li>
+        </ul>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="/contacts">
+        <a class="nav-link" href="/listmanager/contacts">
           <span data-feather="users"></span>
-          Contacts
+          List Manager
         </a>
+        <ul class="">
+          <li class="nav-item">
+            <a href="/listmanager/segments">All Lists</a>
+          </li>
+          <!-- <li class="nav-item">
+            <a href="/listmanager/segments/create">Create List</a>
+          </li> -->
+        </ul>
+        <ul class="">
+          <li class="nav-item">
+            <a href="/listmanager/contacts">All Contacts</a>
+          </li>
+          <!-- <li class="nav-item">
+            <a href="/listmanager/contacts/create">Create Contact</a>
+          </li> -->
+        </ul>
+        <ul class="">
+          <li class="nav-item">
+            <a href="/listmanager/tags">All Tags</a>
+          </li>
+          <!-- <li class="nav-item">
+            <a href="/listmanager/tags/create">Create Tag</a>
+          </li> -->
+        </ul>
       </li>
 
 
@@ -21,6 +50,23 @@
           <span data-feather="file"></span>
           InboxMag
         </a>
+        <ul>
+          <li class="nav-item">
+            <a href="/inboxmag/magazines">All Magazines</a>
+          </li>
+          <li class="nav-item">
+            <a href="/inboxmag/issues">All Issues</a>
+          </li>
+          <li class="nav-item">
+            <a href="/inboxmag/articles">All Articles</a>
+          </li>
+          <li class="nav-item">
+            <a href="/inboxmag/categories">All Categories</a>
+          </li>
+          <li class="nav-item">
+            <a href="/inboxmag/suggestions">All Suggestions</a>
+          </li>
+        </ul>
       </li>
 
       <li class="nav-item">

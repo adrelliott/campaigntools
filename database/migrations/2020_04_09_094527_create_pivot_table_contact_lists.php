@@ -20,8 +20,8 @@ class CreatePivotTableContactLists extends Migration
             $table->timestamps();
             $table->unique(['contact_id', 'list_id']);
 
-            $table->foreign('contact_id')->references('id')->on('contacts')->onDelete('cascade');
-            $table->foreign('list_id')->references('id')->on('lists')->onDelete('cascade');
+            // $table->foreign('contact_id')->references('id')->on('contacts')->onDelete('cascade');
+            // $table->foreign('list_id')->references('id')->on('lists')->onDelete('cascade');
         });
     }
 

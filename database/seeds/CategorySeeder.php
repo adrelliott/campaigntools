@@ -11,6 +11,6 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Inboxmag\Category::class, 50)->create();
+        factory(App\Inboxmag\Category::class, 15)->create();
     }
 }

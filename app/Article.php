@@ -3,6 +3,7 @@
 namespace App\Inboxmag;
 
 use App\Inboxmag\Category;
+use App\Inboxmag\Suggestion;
 use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
@@ -11,5 +12,11 @@ class Article extends Model
 	public function categories()
 	{
 		return $this-> belongsToMany(Category::class);
+	}
+
+	// 
+	public function suggestion()
+	{
+		return $this->belongsTo(Suggestion::class);
 	}
 }

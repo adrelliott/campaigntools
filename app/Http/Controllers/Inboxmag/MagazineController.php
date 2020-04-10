@@ -16,7 +16,8 @@ class MagazineController extends Controller
      */
     public function index()
     {
-        //
+        $magazines = Magazine::all();
+        return view('apps.inboxmag.magazines.index', compact('magazines'));
     }
 
     /**
@@ -48,7 +49,7 @@ class MagazineController extends Controller
      */
     public function show(Magazine $magazine)
     {
-        //
+        return view('apps.inboxmag.magazines.show', compact('magazine'));
     }
 
     /**
