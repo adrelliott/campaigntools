@@ -8,15 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Segment extends Model
 {
-
     
     // A list belongs to just one user
-	public function listOwner()
+	public function owner()
 	{
-		return $this->belongsTo(User::class);
-	}
-
-
+		return $this->belongsTo(User::class, 'user_id');
+	} 
 
 	// Get contacts on this list
 	public function contacts()

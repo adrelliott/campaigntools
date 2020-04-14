@@ -3,6 +3,8 @@
 namespace App;
 
 use App\Listmanager\Segment;
+use App\Listmanager\Contact;
+use App\Inboxmag\Magazine;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -48,6 +50,12 @@ class User extends Authenticatable
     // We can list all contacts belonging to a user here
     public function contacts()
     {
-        // return $this->
+        return $this->hasMany(Contact::class);
+    }
+
+    // An owner has many magazines
+    public function magazines()
+    {
+        return $this->hasMany(Magazine::class, 'user_id');
     }
 }

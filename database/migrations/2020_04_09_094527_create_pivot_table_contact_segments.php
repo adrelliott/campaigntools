@@ -18,7 +18,7 @@ class CreatePivotTableContactSegments extends Migration
             $table->unsignedBigInteger('contact_id');
             $table->unsignedBigInteger('segment_id');
             $table->timestamps();
-            $table->unique(['contact_id', 'segment_id']);
+            // $table->unique(['contact_id', 'segment_id']);
 
             // Add foreign key
             $table->foreign('contact_id')->references('id')->on('contacts')->onDelete('cascade');

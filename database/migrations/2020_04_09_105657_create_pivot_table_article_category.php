@@ -18,7 +18,7 @@ class CreatePivotTableArticleCategory extends Migration
             $table->unsignedBigInteger('article_id');
             $table->unsignedBigInteger('category_id');
             $table->timestamps();
-            $table->unique(['article_id', 'category_id']);
+            // $table->unique(['article_id', 'category_id']);
         });
     }
 

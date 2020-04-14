@@ -13,7 +13,13 @@
   <ol>
   	@foreach($user->segments as $segment)
   		<li><a href="/listmanager/segments/{{ $segment->id }}">{{ $segment->segment_name }}</a></li>
-	@endforeach
+	 @endforeach
+  </ol>  
+  <h3>Magazines</h3>
+  <ol>
+    @foreach($user->magazines as $magazine)
+      <li><a href="/listmanager/magazines/{{ $magazine->id }}">{{ $magazine->magazine_name }}</a></li>
+   @endforeach
   </ol>
 </div>
 

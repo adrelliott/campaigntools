@@ -49,6 +49,7 @@ class SegmentController extends Controller
      */
     public function show(Segment $segment)
     {
+        $segment->load('owner', 'contacts');
         return view('apps.listmanager.segments.show', compact('segment'));
     }
 

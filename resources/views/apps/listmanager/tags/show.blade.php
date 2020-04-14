@@ -8,7 +8,14 @@
   <p><strong>Description:</strong> {{ $tag->description }}</p>
   <hr>
   <h2>Related:</h2>
-  
+  <h3>Contacts with this tag</h3>
+  <ol>
+  	@foreach($tag->contacts as $contact)
+  		<li>
+  			<a href="/listmanager/contacts/{{ $contact->id }}">{{ $contact->first_name }} {{ $contact->last_name }} ({{ $contact->email }})</a>
+  		</li>
+  	@endforeach
+  </ol>
   <ul>
    
   </ul>

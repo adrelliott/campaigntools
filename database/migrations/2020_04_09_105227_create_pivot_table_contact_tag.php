@@ -18,7 +18,7 @@ class CreatePivotTableContactTag extends Migration
             $table->unsignedBigInteger('contact_id');
             $table->unsignedBigInteger('tag_id');
             $table->timestamps();
-            $table->unique(['contact_id', 'tag_id']);
+            // $table->unique(['contact_id', 'tag_id']);
 
             // Add foreign key
             $table->foreign('contact_id')->references('id')->on('contacts')->onDelete('cascade');

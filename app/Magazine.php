@@ -18,4 +18,9 @@ class Magazine extends Model
     {
     	return $this->belongsToMany(Contact::class, 'contact_magazine', 'contact_id', 'magazine_id');
     }
+
+    public function sources()
+    {
+    	// return $this->hasMany(Source::class);
+    }
 }

@@ -48,9 +48,10 @@ class Contact extends Model
     // ******* DEFINE RELATIONSHIPS ********
         
         // Each contact can only belong to one user
-    public function created_by()
+    public function owner()
     {
-        return $this->belongsTo(User::class);
+        // return $this->belongsToThrough(User::class, Segment::class);
+        // return $this->belongsTo(User::class);
 
     }
 

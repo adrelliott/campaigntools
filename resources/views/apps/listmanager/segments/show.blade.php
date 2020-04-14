@@ -8,7 +8,7 @@
   <p><strong>Description:</strong> {{ $segment->description }}</p>
   <hr>
   <h2>Related:</h2>
-  <p><strong>List owner:</strong> {{ $segment->owner }}</p>
+  <p><strong>List owner:</strong> <a href="/admin/users/{{ $segment->owner->id}}">{{ $segment->owner->name }}</a></p>
   <h3>Contacts</h3>
   <ul>
   	@foreach($segment->contacts as $contact)
