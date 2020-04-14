@@ -20,7 +20,7 @@
   <ol>
   	@foreach($contact->subscribesTo as $magazine)
   		<li>
-  			<a href="/listmanager/magazines/{{ $magazine->id }}">{{ $magazine->magazine_name }}</a>
+  			<a href="/inboxmag/magazines/{{ $magazine->id }}">{{ $magazine->magazine_name }}</a>
   		</li>
   	@endforeach
   </ol>
@@ -28,7 +28,7 @@
   <ol>
   	@foreach($contact->hasClicked as $article)
   		<li>
-  			<a href="/listmanager/articles/{{ $article->id }}">{{ $article->article_name }}</a>
+  			<a href="/inboxmag/articles/{{ $article->id }}">{{ $article->article_name }}</a>
   		</li>
   	@endforeach
   </ol>

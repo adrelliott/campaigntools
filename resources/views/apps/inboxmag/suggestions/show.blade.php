@@ -11,10 +11,17 @@
   <p><strong>Source</strong> {{ $suggestion->source }}</p>
   <hr>
   <h2>Related:</h2>
-  
+  <h3>Articles using this suggestion:</h3>
   <ul>
-   
+    @foreach($suggestion->articles as $article)
+      <li>
+        <a href="/inboxmag/articles/{{ $article->id }}">
+          {{ $article->article_name}}
+        </a>
+      </li>
+    @endforeach
   </ul>
+  
 </div>
 <hr>
 {{ dump($suggestion) }}

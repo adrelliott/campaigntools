@@ -11,7 +11,10 @@
   <p><strong>Suggestion ID:</strong> {{ $article->suggestion_id }}</p>
   <hr>
   <h2>Related:</h2>
-  
+  <p><strong>Suggestion:</strong> <a href="/inboxmag/suggestions/{{ $article->suggestion->id }}">{{ $article->suggestion->title }}</a></p>
+  <p><strong>Suggestion link:</strong> {{ $article->suggestion->link }}</p>
+  <p><strong>Issue no:</strong> {{ $article->issue->issue_number }}</p>
+  <p><strong>Issue name:</strong> <a href="/inboxmag/issues/{{ $article->issue->id }}">{{ $article->issue->issue_name }}</a></p>
   <ul>
    
   </ul>

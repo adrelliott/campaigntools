@@ -18,7 +18,7 @@
   <h3>Magazines</h3>
   <ol>
     @foreach($user->magazines as $magazine)
-      <li><a href="/listmanager/magazines/{{ $magazine->id }}">{{ $magazine->magazine_name }}</a></li>
+      <li><a href="/inboxmag/magazines/{{ $magazine->id }}">{{ $magazine->magazine_name }}</a></li>
    @endforeach
   </ol>
 </div>

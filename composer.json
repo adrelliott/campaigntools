@@ -42,14 +42,14 @@
             "App\\Emailgeeks\\": "app/",
             "App\\Inboxmag\\": "app/",
             "App\\Listswap\\": "app/",
-            "App\\Traits\\": "app/"
+            "App\\Traits\\": "app/Traits"
         },
         "classmap": [
             "database/seeds",
             "database/factories"
         ],
          "files": [
-            "app/helpers.php"
+            "app/Helpers/helpers.php"
         ]
     },
     "autoload-dev": {

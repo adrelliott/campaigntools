@@ -33,10 +33,7 @@ class InboxMagSeeder extends Seeder
 	                foreach ($articles as $article) {
 	                	// Add a category
 	                	$categories = factory(App\Inboxmag\Category::class, 3)
-                            ->create([
-                                'categorisable_type' => 'Inboxmag\Article',
-                                'categorisable_id' => $article->id
-                        ]);
+                            ->create();
                         // dump($categories);
                         // $article->categories()->attach($categories);
 

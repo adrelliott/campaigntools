@@ -2,15 +2,21 @@
 
 namespace App\Inboxmag;
 
-use App\Inbox\Article;
+use App\Inboxmag\Article;
+
+use App\Traits\LikeableTrait;
+
 use Illuminate\Database\Eloquent\Model;
 
 class Suggestion extends Model
 {
+
+    // Allow us to put Suggestions in categories (using polymorphic relationship)
+    use LikeableTrait;
+
 	// One suggestion can be used in many articles
-	// @todo Is this right?
-    public function article()
+    public function articles()
     {
-    	$this->belongsToMany(Article::class);
+    	return $this->hasMany(Article::class);
     }
 }

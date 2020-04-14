@@ -73,7 +73,7 @@ class Contact extends Model
         // A contact can subscribe to many magazines, and a magazine can have many contacts
     public function subscribesTo()
     {
-        return $this->belongsToMany(Magazine::class, 'contact_magazine', 'magazine_id', 'contact_id');
+        return $this->belongsToMany(Magazine::class, 'contact_magazine', 'contact_id', 'magazine_id');
     }
 
 

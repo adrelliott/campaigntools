@@ -4,10 +4,16 @@ namespace App\Listmanager;
 
 use App\Listmanager\Contact;
 use App\User;
+
+use App\Traits\LikeableTrait;
+
 use Illuminate\Database\Eloquent\Model;
 
 class Segment extends Model
 {
+
+    // Allow us to put Segments in categories (using polymorphic relationship)
+    use LikeableTrait;
     
     // A list belongs to just one user
 	public function owner()

@@ -10,7 +10,17 @@
   <p><strong>Magazine ID:</strong> {{ $issue->magazine_id }}</p>
   <hr>
   <h2>Related:</h2>
-  
+  <p><strong>Appears in Magazine: </strong>
+    <a href="/inboxmag/magazines/{{ $issue->magazine->id }}">{{ $issue->magazine->magazine_name}}</a>
+  </p>
+  <h3>Articles in this issue</h3>
+  <ol>
+    @foreach($issue->articles as $article)
+      <li>
+        <a href="/inboxmag/issues/{{ $article->id }}">{{ $article->article_name }}</a>
+      </li>
+    @endforeach
+  </ol>
   <ul>
    
   </ul>
