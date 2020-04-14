@@ -13,18 +13,18 @@ class CreatePivotTableArticleIssue extends Migration
      */
     public function up()
     {
-        Schema::create('article_issue', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('article_id');
-            $table->unsignedBigInteger('issue_id');
-            $table->timestamps();
-            // $table->unique(['article_id', 'issue_id']);
+        // Schema::create('article_issue', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->unsignedBigInteger('article_id');
+        //     $table->unsignedBigInteger('issue_id');
+        //     $table->timestamps();
+        //     // $table->unique(['article_id', 'issue_id']);
 
-            // Add foreign key
-            $table->foreign('article_id')->references('id')->on('articles')->onDelete('cascade');
-            $table->foreign('issue_id')->references('id')->on('issues')->onDelete('cascade');
+        //     // Add foreign key
+        //     $table->foreign('article_id')->references('id')->on('articles')->onDelete('cascade');
+        //     $table->foreign('issue_id')->references('id')->on('issues')->onDelete('cascade');
 
-        });
+        // });
     }
 
     /**
@@ -34,6 +34,6 @@ class CreatePivotTableArticleIssue extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('article_issue');
+        // Schema::dropIfExists('article_issue');
     }
 }

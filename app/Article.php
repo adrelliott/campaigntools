@@ -21,33 +21,37 @@ class Article extends Model
     // Allow us to relate Articles to contacts (using polymorphic relationship)
     use ContactableTrait;
 
-	// One article belngs to one issue
+ 	// ******* CREATE RELATIONSHIP MODIFIER METHODS ********
+    public function addReader($contact)
+    {
+    	return $this->readers()->attach($contact);
+    }
+
+    public function claimSuggestion($suggestion)
+    {
+    	// return $this->suggestion()->
+    }
+
+    // ****** DEFINE RELATIONSHIPS
+
+	// An article belongs to one issue
 	public function issue()
 	{
 		return $this->belongsTo(Issue::class);
 	}
 
-	// One article belongs to (is formed from) one suggestion
+	// An article hasOne (is formed from) one suggestion
 	public function suggestion()
 	{
-		return $this->belongsTo(Suggestion::class);
+		return $this->hasOne(Suggestion::class);
 	}
 
-	// One article can have many contacts clicking on it
-	public function readers()
-	{
-		return $this->belongsToMany(Contact::class, 'article_contact', 'contact_id', 'role_id');
-	}
+	// An article hasMany contacts clicking on it.
+	 // Defined via polymorphic relationship on table contactables
+    public function readers()
+    {
+        return $this->morphedToMany(Contact::class, 'contactable')->withTimestamps();
+    }
 	
-	// // Add a category - can we supply a collection?
-	// public function addCategory($category)
-	// {
-	// 	return $this->categorise()->attach($category);
-	// }
 
-	// // An article can belong to many categories in a polymorphic relationship
-	// public function categorise()
-	// {
-	// 	return $this->morphToMany(Category::class, 'categorisable')->withTimestamps();
-	// }
 }

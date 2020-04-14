@@ -20,14 +20,14 @@ class CreateIssuesTable extends Migration
             $table->longText('issue_description');
             $table->longText('introduction');
             $table->longText('sign_off');
-            // $table->unsignedBigInteger('magazine_id');
             $table->datetime('published_at')->nullable();
             $table->timestamps();
             $table->softDeletes();
 
-            // Add foreign keys
+            // Add foreign keys: a magazine hasMany issues
             $table->unsignedbigInteger('magazine_id')->index()->nullable();
             $table->foreign('magazine_id')->references('id')->on('magazines');
+
             // Add foreign keys
             $table->unsignedbigInteger('user_id')->index()->nullable();
             $table->foreign('user_id')->references('id')->on('users');

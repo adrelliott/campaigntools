@@ -12,7 +12,7 @@
   <h3>Contacts</h3>
   <ul>
   	@forelse($segment->contacts as $contact)
-  		<li>{{ $contact->email }}</li>
+  		<li><a href="/listmanager/contacts/{{ $contact->id }}">{{ $contact->email }}</a></li>
     @empty
       <i>No records found</i>
   	@endforelse

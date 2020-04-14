@@ -19,6 +19,24 @@ class Issue extends Model
     // Allow us to relate Issues to contacts (using polymorphic relationship)
     use ContactableTrait;
 
+
+
+    // Add a single article to an issue
+    public function addArticle($article)
+    {
+        $this->articles()->save($article);
+    }
+
+    // Add  article/articles to an issue
+    public function addArticles($articles)
+    {
+        $articles->
+        $this->articles()->saveMany($articles);
+    }
+
+
+
+    // ******** DEFINE RELATIONSHIPS
     public function magazine()
     {
     	return $this->belongsTo(Magazine::class);
@@ -26,6 +44,6 @@ class Issue extends Model
 
     public function articles()
     {
-    	return $this->belongsToMany(Article::class);
+    	return $this->hasMany(Article::class);
     }
 }

@@ -21,14 +21,4 @@ class Tag extends Model
     	return $this->morphToMany(Contact::class, 'contactable');
     }
 
-    // public function contacts() 
-    // {
-    // 	return $this->belongsToMany(Contact::class);
-    // }
-
-    // // Add a tag using the Contactable Trait
-    // public function addContact($contact)
-    // {
-    // 	$this->relateToContact($contact);
-    // }
 }

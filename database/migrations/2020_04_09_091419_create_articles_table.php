@@ -22,20 +22,18 @@ class CreateArticlesTable extends Migration
             $table->string('article_type')->nullable();
             $table->integer('order')->nullable();
             $table->string('author')->default('inboxmag');
-            // $table->foreignId('issue_id');
-            // $table->foreignId('suggestion_id')->nullable();
             $table->timestamps();
             $table->softDeletes();
 
             // Add foreign keys
-            $table->unsignedbigInteger('category_id')->index()->nullable();
-            $table->foreign('category_id')->references('id')->on('categories');
+            // $table->unsignedbigInteger('category_id')->index()->nullable();
+            // $table->foreign('category_id')->references('id')->on('categories');
 
-            // Add foreign keys
+            // Add foreign keys: an issue hasMany articles
             $table->unsignedbigInteger('issue_id')->index()->nullable();
             $table->foreign('issue_id')->references('id')->on('issues');
 
-            // Add foreign keys
+            // Add foreign keys: An article hasOne suggestion 
             $table->unsignedbigInteger('suggestion_id')->index()->nullable();
             $table->foreign('suggestion_id')->references('id')->on('suggestions');
             
