@@ -2,7 +2,7 @@
 
 namespace App\Listmanager;
 
-use App\Traits\LikeableTrait;
+use App\Traits\CategorisableTrait;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,7 +10,7 @@ class Tag extends Model
 {
 	
     // Allow us to put Tags in categories (using polymorphic relationship)
-    use LikeableTrait;
+    use CategorisableTrait;
 
     public function contacts() 
     {

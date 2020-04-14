@@ -7,7 +7,7 @@ use App\Inboxmag\Suggestion;
 use App\Inboxmag\Issue;
 use App\Listmanager\Contact;
 
-use App\Traits\LikeableTrait;
+use App\Traits\CategorisableTrait;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -15,7 +15,7 @@ class Article extends Model
 {
 
     // Allow us to put Articles in categories (using polymorphic relationship)
-    use LikeableTrait;
+    use CategorisableTrait;
 
 	// One article belngs to one issue
 	public function issue()

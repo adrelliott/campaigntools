@@ -3,7 +3,7 @@
 namespace App\Traits;
 use App\Inboxmag\Category;
 
-trait LikeableTrait {
+trait CategorisableTrait {
 
 	// Add a category. Accepts collections, array of IDs or single instance
 	public function addCategory($category)

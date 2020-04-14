@@ -5,7 +5,7 @@ namespace App\Inboxmag;
 use App\Inboxmag\Magazine;
 use App\Inboxmag\Article;
 
-use App\Traits\LikeableTrait;
+use App\Traits\CategorisableTrait;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,7 +13,7 @@ class Issue extends Model
 {
 
     // Allow us to put Issues in categories (using polymorphic relationship)
-    use LikeableTrait;
+    use CategorisableTrait;
 
 
     public function magazine()
