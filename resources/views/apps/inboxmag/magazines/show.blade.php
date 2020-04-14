@@ -14,15 +14,19 @@
   <p><strong>Owner:</strong> <a href="/admin/users/{{ $magazine->owner->id }}">{{ $magazine->owner->name }}</a></p>
   <h3>Issues</h3>
   <ol>
-    @foreach($magazine->issues as $issue)
+    @forelse($magazine->issues as $issue)
       <li><a href="/inboxmag/issues/{{ $issue->id }}">{{ $issue->issue_name }}</a></li>
-    @endforeach
+    @empty
+      <i>No records found</i>
+    @endforelse
   </ol>
   <h3>Subscribers</h3>
   <ol>
-    @foreach($magazine->subscribers as $subscriber)
+    @forelse($magazine->subscribers as $subscriber)
       <li><a href="/listmanager/contacts/{{ $subscriber->id }}">{{ $subscriber->first_name }} {{ $subscriber->last_name }} ({{ $subscriber->email }})</a></li>
-    @endforeach
+    @empty
+      <i>No records found</i>
+    @endforelse
   </ol>
 </div>
 <hr>

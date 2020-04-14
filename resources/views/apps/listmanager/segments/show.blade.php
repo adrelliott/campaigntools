@@ -11,9 +11,11 @@
   <p><strong>List owner:</strong> <a href="/admin/users/{{ $segment->owner->id}}">{{ $segment->owner->name }}</a></p>
   <h3>Contacts</h3>
   <ul>
-  	@foreach($segment->contacts as $contact)
+  	@forelse($segment->contacts as $contact)
   		<li>{{ $contact->email }}</li>
-  	@endforeach
+    @empty
+      <i>No records found</i>
+  	@endforelse
   </ul>
 </div>
 <hr>

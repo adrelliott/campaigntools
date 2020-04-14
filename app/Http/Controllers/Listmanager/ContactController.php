@@ -51,7 +51,7 @@ class ContactController extends Controller
      */
     public function show(Contact $contact)
     {
-        $contact->load('segments', 'tags', 'subscribesTo', 'hasClicked');
+        // $contact->load('articles', 'categories', 'issues',  'tags', 'subscribesTo', 'hasClicked');
         return view('apps.listmanager.contacts.show', compact('contact'));
     }
 

@@ -15,11 +15,13 @@
   </p>
   <h3>Articles in this issue</h3>
   <ol>
-    @foreach($issue->articles as $article)
+    @forelse($issue->articles as $article)
       <li>
         <a href="/inboxmag/issues/{{ $article->id }}">{{ $article->article_name }}</a>
       </li>
-    @endforeach
+    @empty
+      <i>No records found</i>
+    @endforelse
   </ol>
   <ul>
    

@@ -8,6 +8,7 @@ use App\Inboxmag\Issue;
 use App\Listmanager\Contact;
 
 use App\Traits\CategorisableTrait;
+use App\Traits\ContactableTrait;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -16,6 +17,9 @@ class Article extends Model
 
     // Allow us to put Articles in categories (using polymorphic relationship)
     use CategorisableTrait;
+
+    // Allow us to relate Articles to contacts (using polymorphic relationship)
+    use ContactableTrait;
 
 	// One article belngs to one issue
 	public function issue()

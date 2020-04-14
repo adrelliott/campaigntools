@@ -13,13 +13,16 @@
   <h2>Related:</h2>
   <h3>Articles using this suggestion:</h3>
   <ul>
-    @foreach($suggestion->articles as $article)
+    @forelse($suggestion->articles as $article)
       <li>
         <a href="/inboxmag/articles/{{ $article->id }}">
           {{ $article->article_name}}
         </a>
       </li>
-    @endforeach
+      
+    @empty
+      <i>No records found</i>
+    @endforelse
   </ul>
   
 </div>

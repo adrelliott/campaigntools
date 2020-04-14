@@ -45,42 +45,73 @@ class Contact extends Model
         'created_by_id',
     ];
 
-    // ******* DEFINE RELATIONSHIPS ********
-        
-        // Each contact can only belong to one user
-    public function owner()
-    {
-        // return $this->belongsToThrough(User::class, Segment::class);
-        // return $this->belongsTo(User::class);
+    // ******* CREATE RELATIONSHIP MODIFIER METHODS ********
 
+    public function clickedOn($article)
+    {
+        return $this->articles()->attach($article);
     }
 
-    // A contact may belong to many lists
+    public function subscribedTo($magazine)
+    {
+        return $this->magazines()->attach($magazine);
+    }
+
+    public function addToList($segment)
+    {
+        return $this->segments()->attach($segment);
+    }
+
+    public function addTags ($tag)
+    {
+        return $this->tags()->attach($tag);
+    }
+
+
+
+    // ******* DEFINE RELATIONSHIPS ********
+ 
+    // Defined via polymorphic relationship on table contactables
+    public function articles()
+    {
+        return $this->morphedByMany(Article::class, 'contactable')->withTimestamps();
+    }
+
+    // Defined via polymorphic relationship on table contactables
+    public function categories()
+    {
+        return $this->morphedByMany(Category::class, 'contactable')->withTimestamps();
+    }
+
+    // Defined via polymorphic relationship on table contactables
+    public function issues()
+    {
+        return $this->morphedByMany(Issue::class, 'contactable')->withTimestamps();
+    }
+
+    // Defined via polymorphic relationship on table contactables
+    public function magazines()
+    {
+        return $this->morphedByMany(Magazine::class, 'contactable')->withTimestamps();
+    }
+
+    // Defined via polymorphic relationship on table contactables
     public function segments()
     {
-        return $this->belongsToMany(Segment::class);
-
+        return $this->morphedByMany(Segment::class, 'contactable')->withTimestamps();
     }
 
-
-        // A contact can have many tags, and a tag can have many contacts
+    // Defined via polymorphic relationship on table contactables
     public function tags()
     {
-        return $this->belongsToMany(Tag::class);
-
+        return $this->morphedByMany(Tag::class, 'contactable')->withTimestamps();
     }
-
-        // A contact can subscribe to many magazines, and a magazine can have many contacts
-    public function subscribesTo()
+    
+    // Each contact belongs to a segment, and  a segment belongs to one user
+    public function owner()
     {
-        return $this->belongsToMany(Magazine::class, 'contact_magazine', 'contact_id', 'magazine_id');
-    }
-
-
-    public function hasClicked()
-    {
-        return $this->belongsToMany(Article::class, 'article_contact', 'article_id', 'contact_id');
-
+        // Will add this when we implement the multitenancy
+        // return $this->user_id;
     }
 
     

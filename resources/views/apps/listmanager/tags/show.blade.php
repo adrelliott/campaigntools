@@ -10,11 +10,13 @@
   <h2>Related:</h2>
   <h3>Contacts with this tag</h3>
   <ol>
-  	@foreach($tag->contacts as $contact)
+  	@forelse($tag->contacts as $contact)
   		<li>
   			<a href="/listmanager/contacts/{{ $contact->id }}">{{ $contact->first_name }} {{ $contact->last_name }} ({{ $contact->email }})</a>
   		</li>
-  	@endforeach
+    @empty
+      <i>No records found</i>
+  	@endforelse
   </ol>
   <ul>
    
