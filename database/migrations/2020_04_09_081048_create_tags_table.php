@@ -19,6 +19,12 @@ class CreateTagsTable extends Migration
             $table->longText('tag_description')->nullable();
             $table->timestamps();
             $table->softDeletes();
+
+            
+            // Add foreign keys
+            $table->unsignedbigInteger('user_id')->index()->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
+            
         });
     }
 

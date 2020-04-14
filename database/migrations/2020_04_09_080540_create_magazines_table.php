@@ -26,9 +26,13 @@ class CreateMagazinesTable extends Migration
             $table->string('publish_day');
             $table->string('publish_time')->nullable();
             $table->boolean('auto_publish')->default(FALSE);
-            $table->unsignedBigInteger('user_id');
+            // $table->unsignedBigInteger('user_id');
             $table->timestamps();
             $table->softDeletes();
+            
+            // Add foreign keys
+            $table->unsignedbigInteger('user_id')->index()->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

@@ -19,6 +19,11 @@ class CreatePivotTableArticleIssue extends Migration
             $table->unsignedBigInteger('issue_id');
             $table->timestamps();
             $table->unique(['article_id', 'issue_id']);
+
+            // Add foreign key
+            $table->foreign('article_id')->references('id')->on('articles')->onDelete('cascade');
+            $table->foreign('issue_id')->references('id')->on('issues')->onDelete('cascade');
+
         });
     }
 

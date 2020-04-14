@@ -23,6 +23,10 @@ class CreateContactsTable extends Migration
             $table->datetime('verified_at')->nullable();
             $table->timestamps();
             $table->softDeletes();
+            
+            // Add foreign keys
+            $table->unsignedbigInteger('user_id')->index()->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

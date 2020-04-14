@@ -22,6 +22,15 @@ class CreateSuggestionsTable extends Migration
             $table->string('source')->default('pocket');
             $table->timestamps();
             $table->softDeletes();
+
+
+            // Add foreign keys
+            // $table->unsignedbigInteger('author_id')->index()->nullable()->defaul(1); // Defaults to Inboxmag
+            // $table->foreign('author_id')->references('id')->on('authors');
+            
+            // Add foreign keys
+            $table->unsignedbigInteger('user_id')->index()->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

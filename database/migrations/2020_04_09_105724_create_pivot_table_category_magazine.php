@@ -19,6 +19,11 @@ class CreatePivotTableCategoryMagazine extends Migration
             $table->unsignedBigInteger('magazine_id');
             $table->timestamps();
             $table->unique(['category_id', 'magazine_id']);
+
+            // Add foreign key
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('magazine_id')->references('id')->on('magazines')->onDelete('cascade');
+
         });
     }
 

@@ -5,7 +5,8 @@ namespace App\Listmanager;
 use App\Inboxmag\Article;
 use App\Inboxmag\Magazine;
 use App\User;
-use App\Listmanager\ContactList;
+use App\Listmanager\Segment;
+use App\Listmanager\Tag;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
@@ -49,14 +50,14 @@ class Contact extends Model
         // Each contact can only belong to one user
     public function created_by()
     {
-        return $this->belongsTo(User::class, 'created_by_id');
+        return $this->belongsTo(User::class);
 
     }
 
     // A contact may belong to many lists
-    public function inLists()
+    public function segments()
     {
-        return $this->belongsToMany(ContactList::class, 'lists', 'list_id');
+        return $this->belongsToMany(Segment::class);
 
     }
 
@@ -72,13 +73,12 @@ class Contact extends Model
     public function subscribesTo()
     {
         return $this->belongsToMany(Magazine::class, 'contact_magazine', 'magazine_id', 'contact_id');
-
     }
 
 
     public function hasClicked()
     {
-        return $this->belongsToMany(Article::class, 'articles', 'article_id');
+        return $this->belongsToMany(Article::class, 'article_contact', 'article_id', 'contact_id');
 
     }
 

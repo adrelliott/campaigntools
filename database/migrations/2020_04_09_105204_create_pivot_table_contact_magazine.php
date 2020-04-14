@@ -19,6 +19,11 @@ class CreatePivotTableContactMagazine extends Migration
             $table->unsignedBigInteger('magazine_id');
             $table->timestamps();
             $table->unique(['contact_id', 'magazine_id']);
+
+            // Add foreign key
+            $table->foreign('contact_id')->references('id')->on('contacts')->onDelete('cascade');
+            $table->foreign('magazine_id')->references('id')->on('magazines')->onDelete('cascade');
+
         });
     }
 

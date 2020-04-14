@@ -11,7 +11,7 @@ class Article extends Model
     // An article can have many Categories
 	public function categories()
 	{
-		return $this-> belongsToMany(Category::class);
+		return $this-> hasMany(Category::class, 'category_id');
 	}
 
 	// 

@@ -20,6 +20,11 @@ class CreateFailedJobsTable extends Migration
             $table->longText('payload');
             $table->longText('exception');
             $table->timestamp('failed_at')->useCurrent();
+
+            
+            // Add foreign keys
+            $table->unsignedbigInteger('user_id')->index()->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

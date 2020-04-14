@@ -17,9 +17,13 @@ class CreateSegmentsTable extends Migration
             $table->id();
             $table->string('segment_name')->nullable();
             $table->longText('segment_description')->nullable();
-            // $table->foreignId('user_id')->index()->nullable()->unsigned();
             $table->timestamps();
             $table->softDeletes();
+
+            // Add foreign keys
+            $table->unsignedbigInteger('user_id')->index()->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
+            
 
            
         });
