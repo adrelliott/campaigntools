@@ -42,6 +42,7 @@ class Contact extends Model
         'first_name',
         'email',
         'postal_code',
+        'verified_at',
     ];
 
 
@@ -130,34 +131,36 @@ class Contact extends Model
 
     // GETTERS AND SETTERS AND ALL THAT JAZZ
 
-    public function getSupressedAtAttribute($value)
-    {
-        return $value ? Carbon::createFromFormat('Y-m-d H:i:s', $value)->format(config('panel.date_format') . ' ' . config('panel.time_format')) : null;
+    // public function getSupressedAtAttribute($value)
+    // {
+    //     return $value ? Carbon::createFromFormat('Y-m-d H:i:s', $value)->format(config('panel.date_format') . ' ' . config('panel.time_format')) : null;
 
-    }
+    // }
 
-    public function setSupressedAtAttribute($value)
-    {
-        $this->attributes['supressed_at'] = $value ? Carbon::createFromFormat(config('panel.date_format') . ' ' . config('panel.time_format'), $value)->format('Y-m-d H:i:s') : null;
+    // public function setSupressedAtAttribute($value)
+    // {
+    //     $this->attributes['supressed_at'] = $value ? Carbon::createFromFormat(config('panel.date_format') . ' ' . config('panel.time_format'), $value)->format('Y-m-d H:i:s') : null;
 
-    }
+    // }
 
-    public function getVerifiedAtAttribute($value)
-    {
-        return $value ? Carbon::createFromFormat('Y-m-d H:i:s', $value)->format(config('panel.date_format') . ' ' . config('panel.time_format')) : null;
+    // public function getVerifiedAtAttribute($value)
+    // {
+    //     return $value;
+    //     // return $value ? Carbon::createFromFormat('Y-m-d H:i:s', $value)->format(config('panel.date_format') . ' ' . config('panel.time_format')) : null;
 
-    }
+    // }
 
-    public function setVerifiedAtAttribute($value)
-    {
-        $this->attributes['verified_at'] = $value ? Carbon::createFromFormat(config('panel.date_format') . ' ' . config('panel.time_format'), $value)->format('Y-m-d H:i:s') : null;
+    // public function setVerifiedAtAttribute($value)
+    // {
+    //     return $value;
+    //     // $this->attributes['verified_at'] = $value ? Carbon::createFromFormat(config('panel.date_format') . ' ' . config('panel.time_format'), $value)->format('Y-m-d H:i:s') : null;
 
-    }
+    // }
 
-    protected function serializeDate(DateTimeInterface $date)
-    {
-        return $date->format('Y-m-d H:i:s');
+    // protected function serializeDate(DateTimeInterface $date)
+    // {
+    //     return $date->format('Y-m-d H:i:s');
 
-    }
+    // }
 
 }

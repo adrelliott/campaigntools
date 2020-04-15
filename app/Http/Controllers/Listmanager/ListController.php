@@ -3,6 +3,10 @@
 namespace App\Http\Controllers\Listmanager;
 
 use App\Listmanager\ListModel;
+use App\Listmanager\Category;
+use App\Http\Requests\StoreListRequest;
+use App\Http\Requests\UpdateListRequest;
+use App\Http\Requests\DeleteListRequest;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -36,9 +40,11 @@ class ListController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreListRequest $request)
     {
-        //
+        $list = ListModel::create($request->all());
+        // return redirect()->route('listmanager.lists.index');
+        return redirect('/listmanager/lists');
     }
 
     /**
@@ -60,7 +66,7 @@ class ListController extends Controller
      */
     public function edit(ListModel $list)
     {
-        //
+        return view('apps.listmanager.lists.edit', compact('list'));
     }
 
     /**
@@ -72,7 +78,19 @@ class ListController extends Controller
      */
     public function update(Request $request, ListModel $list)
     {
-        //
+        // $request->validateWithBag(
+        //     'listErrors',
+        //     [
+        //         'list_name' => ['required', 'min:3', 'max:255'],
+        //         'list_description' => ['max:255']
+        //     ]
+        // );
+        $request->validate([
+                'list_name' => ['required', 'min:3', 'max:255'],
+                'list_description' => ['max:255']
+        ]);
+        $list->update($request->all());
+        return redirect('/listmanager/lists');
     }
 
     /**

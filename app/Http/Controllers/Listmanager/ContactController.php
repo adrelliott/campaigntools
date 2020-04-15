@@ -30,9 +30,9 @@ class ContactController extends Controller
      */
     public function create()
     {
-        $tags = Tag::all()->pluck('id', 'tag_name');
-        $segments = Segment::all()->pluck('id', 'segment_name');
-        $lists = ListModel::all()->pluck('id', 'list_name');
+        $tags = Tag::all()->pluck('tag_name', 'id');
+        $segments = Segment::all()->pluck('segment_name', 'id');
+        $lists = ListModel::all()->pluck('list_name', 'id');
         return view('apps.listmanager.contacts.create', compact('tags', 'segments', 'lists'));
     }
 

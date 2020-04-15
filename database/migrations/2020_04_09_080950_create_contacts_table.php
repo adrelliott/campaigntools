@@ -19,8 +19,8 @@ class CreateContactsTable extends Migration
             $table->string('last_name')->nullable();
             $table->string('email');
             $table->string('postal_code')->nullable();
-            $table->datetime('supressed_at')->nullable();
-            $table->datetime('verified_at')->nullable();
+            $table->timestamp('supressed_at')->nullable();
+            $table->timestamp('verified_at')->nullable();
             $table->timestamps();
             $table->softDeletes();
             

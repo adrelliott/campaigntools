@@ -21,7 +21,8 @@ class ListModel extends Model
 
     // Allow mass assignment for:
     protected $fillable = [
-        'list_name', 'list_description'
+        'list_name', 
+        'list_description'
     ];
 
 
@@ -29,6 +30,17 @@ class ListModel extends Model
     public function getOwner()
     {
     	return $this->user();
+    }
+
+    // Count contacts that:
+    // - HAVE been verfified (verified_at is not NULL)
+    // - HAVE NOT been supressed (supressed_at is NULL)
+    public function getActiveUsers()
+    {
+        $activeUsers = $this->getContacts()
+            ->whereNotNull('verified_at')
+            ->whereNull('supressed_at');
+        return $activeUsers->count();
     }
 
     // SEE ALSO: ContactableTrait for other methods
