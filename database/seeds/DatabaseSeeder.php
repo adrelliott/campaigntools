@@ -13,11 +13,12 @@ class DatabaseSeeder extends Seeder
     {
     	
         $this->call([
-            // Seed the databases that don't need direct relationships
+
+            // Create a user with standard credentials (admin@admin.com/password)
         	UserSeeder::class,
 
-            // Now seed those tables with relationships
-            ListManagerSeeder::class,  // Mocks up a user base with contacts lists
+            // Now mock creating users, lists, segments, tags and contacts
+            ListManagerSeeder::class, 
             
             // Now create a magazine for each user and add some subscribers
             // InboxMagSeeder::class,  // Mocks up some magazines, with issues and articles

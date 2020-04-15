@@ -18,17 +18,18 @@ class ListManagerSeeder extends Seeder
             // Create a user
             $user = factory(App\User::class)->create();
             
-            //Create some segments
-            $segments = factory(App\Listmanager\Segment::class, 3)->create([
+            //Create some lists
+            $lists = factory(App\Listmanager\ListModel::class, 3)->create([
                 'user_id' => $user->id
             ]);
 
-            //loop through segments 
-            foreach ($segments as $segment) {
+            //loop through lists 
+            foreach ($lists as $list) {
 
-                // Create some contacts & save to segment
+                // Create some contacts & save to this list
                 $contacts = factory(App\Listmanager\Contact::class, 30)->create(); 
-                $segment->contacts()->sync($contacts); 
+                $list->addContacts($contacts);
+                // $list->contacts()->sync($contacts); 
 
                 // now apply some random tags to the contacts
                 foreach ($contacts as $contact) {

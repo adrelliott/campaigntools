@@ -5,6 +5,7 @@ namespace App\Listmanager;
 use App\Inboxmag\Article;
 use App\Inboxmag\Magazine;
 use App\User;
+use App\Listmanager\ListModel;
 use App\Listmanager\Segment;
 use App\Listmanager\Tag;
 
@@ -16,6 +17,10 @@ use \DateTimeInterface;
 class Contact extends Model
 {
     use SoftDeletes;
+
+    protected $hidden = [
+        'verified_at', 'supressed_at',
+    ];
 
     public static $searchable = [
         'last_name',
@@ -35,17 +40,12 @@ class Contact extends Model
     protected $fillable = [
         'last_name',
         'first_name',
-        'created_at',
-        'updated_at',
-        'deleted_at',
+        'email',
         'postal_code',
-        'verified_at',
-        'supressed_at',
-        'email_address',
-        'created_by_id',
     ];
 
-    // ******* CREATE RELATIONSHIP MODIFIER METHODS ********
+
+    // ******* DEFINE METHODS ********
 
     public function clickedOn($article)
     {
@@ -57,7 +57,12 @@ class Contact extends Model
         return $this->magazines()->attach($magazine);
     }
 
-    public function addToList($segment)
+    public function addToList($list)
+    {
+        return $this->lists()->attach($list);
+    }
+
+    public function addToSegment($segment)
     {
         return $this->segments()->attach($segment);
     }
@@ -96,6 +101,12 @@ class Contact extends Model
     }
 
     // Defined via polymorphic relationship on table contactables
+    public function lists()
+    {
+        return $this->morphedByMany(ListModel::class, 'contactable')->withTimestamps();
+    }
+
+    // Defined via polymorphic relationship on table contactables
     public function segments()
     {
         return $this->morphedByMany(Segment::class, 'contactable')->withTimestamps();
@@ -110,6 +121,7 @@ class Contact extends Model
     // Each contact belongs to a segment, and  a segment belongs to one user
     public function owner()
     {
+        return $this->belongsTo(User::class);
         // Will add this when we implement the multitenancy
         // return $this->user_id;
     }

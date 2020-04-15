@@ -11,8 +11,8 @@
   <h2>Related:</h2>
   <h3>Lists</h3>
   <ol>
-  	@foreach($user->segments as $segment)
-  		<li><a href="/listmanager/segments/{{ $segment->id }}">{{ $segment->segment_name }}</a></li>
+  	@foreach($user->lists as $list)
+  		<li><a href="/listmanager/lists/{{ $list->id }}">{{ $list->list_name }}</a></li>
 	 @endforeach
   </ol>  
   <h3>Magazines</h3>

@@ -10,7 +10,7 @@
   <h2>Related:</h2>
   <h3>Contacts with this tag</h3>
   <ol>
-  	@forelse($tag->contacts as $contact)
+  	@forelse($tag->getContacts as $contact)
   		<li>
   			<a href="/listmanager/contacts/{{ $contact->id }}">{{ $contact->first_name }} {{ $contact->last_name }} ({{ $contact->email }})</a>
   		</li>

@@ -11,13 +11,23 @@
   <p><strong>Owner: </strong>{{-- $contact->owner->name --}}</p>
   <h3>Belongs to lists</h3>
   <ol>
-  	@forelse($contact->segments as $segment)
+  	@forelse($contact->lists as $list)
   		<li>
-  			<a href="/listmanager/segments/{{ $segment->id }}">{{ $segment->segment_name }}</a>
+  			<a href="/listmanager/lists/{{ $list->id }}">{{ $list->list_name }}</a>
   		</li>
     @empty
       <i>No records found</i>
   	@endforelse
+  </ol>
+  <h3>Belongs to Segments</h3>
+  <ol>
+    @forelse($contact->segments as $segment)
+      <li>
+        <a href="/listmanager/segments/{{ $segment->id }}">{{ $segment->segment_name }}</a>
+      </li>
+    @empty
+      <i>No records found</i>
+    @endforelse
   </ol>
   <h3>Magazines subscribed to</h3>
   <ol>

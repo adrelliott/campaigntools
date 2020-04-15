@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateContactsTable extends Migration
+class CreateListsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,13 @@ class CreateContactsTable extends Migration
      */
     public function up()
     {
-        Schema::create('contacts', function (Blueprint $table) {
+        Schema::create('lists', function (Blueprint $table) {
             $table->id();
-            $table->string('first_name')->nullable();
-            $table->string('last_name')->nullable();
-            $table->string('email');
-            $table->string('postal_code')->nullable();
-            $table->datetime('supressed_at')->nullable();
-            $table->datetime('verified_at')->nullable();
+            $table->string('list_name');
+            $table->text('list_description')->nullable();
             $table->timestamps();
             $table->softDeletes();
-            
+
             // Add foreign keys
             $table->unsignedbigInteger('user_id')->index()->nullable();
             $table->foreign('user_id')->references('id')->on('users');
@@ -37,7 +33,6 @@ class CreateContactsTable extends Migration
      */
     public function down()
     {
-        Schema::disableForeignKeyConstraints();
-        Schema::dropIfExists('contacts');
+        Schema::dropIfExists('lists');
     }
 }

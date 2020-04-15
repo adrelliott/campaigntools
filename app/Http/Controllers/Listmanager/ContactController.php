@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Listmanager;
 
-use App\Http\Controllers\Controller;
 use App\Listmanager\Contact;
 use App\Listmanager\Segment;
+use App\Listmanager\Tag;
+use App\Listmanager\ListModel;
+
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
@@ -27,9 +30,10 @@ class ContactController extends Controller
      */
     public function create()
     {
-        $tags = Tag::all()->pluck('tag_name', 'id');
-        $segments = Segment::all()->pluck('segment_name', 'id');
-        return view('apps.listmanager.contacts.create', compact('tags', 'segments'));
+        $tags = Tag::all()->pluck('id', 'tag_name');
+        $segments = Segment::all()->pluck('id', 'segment_name');
+        $lists = ListModel::all()->pluck('id', 'list_name');
+        return view('apps.listmanager.contacts.create', compact('tags', 'segments', 'lists'));
     }
 
     /**

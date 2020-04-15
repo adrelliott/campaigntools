@@ -19,6 +19,7 @@ class CreateCategorisableTable extends Migration
             $table->unsignedBigInteger('categorisable_id');
             $table->string('categorisable_type');
             $table->timestamps();
+            $table->softDeletes();
 
             // Define the unique (and pass a name for the field, as the concatenated auto-generated nae is too long)
             $table->unique(['category_id', 'categorisable_id', 'categorisable_type'], 'categorisable_unique');

@@ -32,6 +32,7 @@ Route::group(['prefix' => 'listmanager', 'as' => 'listmanager.', 'namespace' => 
 
 	// Route::delete();
 	Route::Resource('contacts', 'ContactController');
+	Route::Resource('lists', 'ListController');
 	Route::Resource('segments', 'SegmentController');
 	Route::Resource('tags', 'TagController');
 });

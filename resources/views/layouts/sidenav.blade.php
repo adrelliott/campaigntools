@@ -20,11 +20,13 @@
         </a>
         <ul class="">
           <li class="nav-item">
-            <a href="/listmanager/segments">All Lists</a>
+            <a href="/listmanager/lists">All Lists</a>
           </li>
-          <!-- <li class="nav-item">
-            <a href="/listmanager/segments/create">Create List</a>
-          </li> -->
+        </ul>
+        <ul class="">
+          <li class="nav-item">
+            <a href="/listmanager/segments">All Segments</a>
+          </li>
         </ul>
         <ul class="">
           <li class="nav-item">

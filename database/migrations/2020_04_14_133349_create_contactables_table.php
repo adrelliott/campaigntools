@@ -19,6 +19,7 @@ class CreateContactablesTable extends Migration
             $table->unsignedBigInteger('contactable_id');
             $table->string('contactable_type');
             $table->timestamps();
+            $table->softDeletes();
 
             // Define the unique (and pass a name for the field, as the concatenated auto-generated nae is too long)
             $table->unique(['contact_id', 'contactable_id', 'contactable_type'], 'contactable_unique');
