@@ -17,7 +17,7 @@
   <ol>
     @forelse($issue->articles as $article)
       <li>
-        <a href="/inboxmag/issues/{{ $article->id }}">{{ $article->article_name }}</a>
+        <a href="/inboxmag/articles/{{ $article->id }}">{{ $article->article_name }}</a>
       </li>
     @empty
       <i>No records found</i>

@@ -27,7 +27,9 @@ class ListManagerSeeder extends Seeder
             foreach ($lists as $list) {
 
                 // Create some contacts & save to this list
-                $contacts = factory(App\Listmanager\Contact::class, 30)->create(); 
+                $contacts = factory(App\Listmanager\Contact::class, 30)->create(
+                    ['user_id' => $user->id]
+                ); 
                 $list->addContacts($contacts);
                 // $list->contacts()->sync($contacts); 
 

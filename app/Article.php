@@ -22,15 +22,49 @@ class Article extends Model
     use ContactableTrait;
 
  	// ******* CREATE RELATIONSHIP MODIFIER METHODS ********
-    public function addReader($contact)
+
+    // Get all reader(s) of an article (in other words, who's clicked on it)
+    // Wrapper for the method on ContactableTrait
+    public function getReaders()
     {
-    	return $this->readers()->attach($contact);
+        return $this->getContacts();
     }
 
+    // Add reader(s) to an article (in other words, who's clicked on it)
+    // Wrapper for the method on ContactableTrait
+    public function addReaders($contacts)
+    {
+    	return $this->addContacts($contacts);
+    }
+
+    // Remove reader(s) from an article (in other words, who's clicked on it)
+    // Wrapper for the method on ContactableTrait
+    public function removeReaders($contacts)
+    {
+        return $this->removeContacts($contacts);
+    }
+    
+    // Get all reader(s) of an article (in other words, who's clicked on it)
+    // Wrapper for the method on ContactableTrait
+    public function getSuggestion()
+    {
+        return $this->suggestion();
+    }
+
+    // Associate a suggestion to an article (one:one relationship)
     public function claimSuggestion($suggestion)
     {
-    	// return $this->suggestion()->
+    	return $this->suggestion()->associate($suggestion);
     }
+    
+    // Disassociate a suggestion to an article (one:one relationship)
+    public function removeSuggestion($suggestion)
+    {
+        return $this->save(['suggestion_id' => NULL]);
+        // return $this->suggestion()->detach($suggestion);
+    }
+
+
 
     // ****** DEFINE RELATIONSHIPS
 
@@ -43,15 +77,7 @@ class Article extends Model
 	// An article hasOne (is formed from) one suggestion
 	public function suggestion()
 	{
-		return $this->hasOne(Suggestion::class);
+		return $this->belongsTo(Suggestion::class);
 	}
-
-	// An article hasMany contacts clicking on it.
-	 // Defined via polymorphic relationship on table contactables
-    public function readers()
-    {
-        return $this->morphedToMany(Contact::class, 'contactable')->withTimestamps();
-    }
-	
 
 }

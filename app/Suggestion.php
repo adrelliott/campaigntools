@@ -20,8 +20,9 @@ class Suggestion extends Model
     use ContactableTrait;
 
 	// One suggestion can be used in many articles
-    public function articles()
+    public function article()
     {
-    	return $this->hasMany(Article::class);
+    	return $this->belongsTo(Article::class);
     }
+
 }

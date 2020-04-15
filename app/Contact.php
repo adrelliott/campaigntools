@@ -121,7 +121,7 @@ class Contact extends Model
     // Each contact belongs to a segment, and  a segment belongs to one user
     public function owner()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
         // Will add this when we implement the multitenancy
         // return $this->user_id;
     }

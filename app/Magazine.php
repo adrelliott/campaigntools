@@ -21,22 +21,56 @@ class Magazine extends Model
     // Allow us to relate Magazines to contacts (using polymorphic relationship)
     use ContactableTrait;
 
+    // ***** DEFINE METHODS
+    // Uses the method in ContactableTrait
+    public function getSubscribers()
+    {
+        return $this->getContacts();
+    }
+
+    // Uses the method in ContactableTrait
+    public function addSubscribers($contacts)
+    {
+        return $this->addContacts($contacts);
+    }
+
+    // Uses the method in ContactableTrait
+    public function removeSubscribers($contacts)
+    {
+        return $this->removeContacts($contacts);
+    }
+
+    public function getIssues()
+    {
+        return $this->issues();
+    }
+
+    public function addIssues($issues)
+    {
+        return $this->issues()->saveMany($issues);
+    }
+
+    public function removeIssues($issues)
+    {
+        return $this->issues()->detach($issues);
+    }
+    
+
+
+    // ***** DEFINE RELATIONSHIPS
     // A magazine can have many issues
     public function issues()
     {
     	return $this->hasMany(Issue::class);
     }
 
-    public function subscribers()
-    {
-    	return $this->belongsToMany(Contact::class, 'contact_magazine', 'magazine_id', 'contact_id');
-    }
-
+    // A magazine has one owner
     public function owner()
     {
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    // A magazine can have many sources ???????????
     public function sources()
     {
     	// return $this->hasMany(Source::class);

@@ -49,7 +49,6 @@ class MagazineController extends Controller
      */
     public function show(Magazine $magazine)
     {
-        $magazine->load('owner', 'issues', 'subscribers');
         return view('apps.inboxmag.magazines.show', compact('magazine'));
     }
 

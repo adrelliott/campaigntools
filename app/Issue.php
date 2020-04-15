@@ -30,7 +30,6 @@ class Issue extends Model
     // Add  article/articles to an issue
     public function addArticles($articles)
     {
-        $articles->
         $this->articles()->saveMany($articles);
     }
 

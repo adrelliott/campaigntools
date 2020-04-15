@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
             ListManagerSeeder::class, 
             
             // Now create a magazine for each user and add some subscribers
-            // InboxMagSeeder::class,  // Mocks up some magazines, with issues and articles
+            InboxMagSeeder::class,  // Mocks up some magazines, with issues and articles
             
            
 

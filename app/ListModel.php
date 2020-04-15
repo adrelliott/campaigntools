@@ -35,7 +35,6 @@ class ListModel extends Model
 
 
 
-
     // ***** DEFINE RELATIONSHIPS
     // A list belongs to just one user
     public function user()

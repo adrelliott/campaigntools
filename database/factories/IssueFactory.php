@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Issue::class, function (Faker $faker) {
 
-	static $number = 0;
+	static $number = 1;
     
     return [
         'issue_number' => $number++,
