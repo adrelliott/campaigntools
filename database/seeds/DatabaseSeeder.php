@@ -14,14 +14,20 @@ class DatabaseSeeder extends Seeder
     	
         $this->call([
 
-            // Create a user with standard credentials (admin@admin.com/password)
-        	UserSeeder::class,
+            // Set up the roles and modules
+            RoleSetupSeeder::class,
 
-            // Now mock creating users, lists, segments, tags and contacts
+            // Create a superadmin
+            SuperAdminUserSeeder::class,
+
+            // Create some organisations and users & apply modules & roles
+            UsersSeeder::class,
+            
+            // Now mock creating lists, segments, tags and contacts
             ListManagerSeeder::class, 
             
             // Now create a magazine for each user and add some subscribers
-            InboxMagSeeder::class,  // Mocks up some magazines, with issues and articles
+            // InboxMagSeeder::class,  // Mocks up some magazines, with issues and articles
             
            
 

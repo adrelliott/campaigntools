@@ -15,7 +15,8 @@ class CreateRolesTable extends Migration
     {
         Schema::create('roles', function (Blueprint $table) {
             $table->id();
-            $table->softDeletes();
+            $table->string('role_name');
+            $table->timestamps();
         });
     }
 
@@ -26,6 +27,7 @@ class CreateRolesTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('roles');
     }
 }

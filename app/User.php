@@ -5,6 +5,8 @@ namespace App;
 use App\Listmanager\ListModel;
 use App\Listmanager\Contact;
 use App\Inboxmag\Magazine;
+use App\Role;
+use App\Module;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -43,6 +45,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    // ****** DEFINE METHODS
+
+
 
     // ***** DEFINE RELATIONSHIPS
 
@@ -62,5 +67,17 @@ class User extends Authenticatable
     public function magazines()
     {
         return $this->hasMany(Magazine::class);
+    }
+
+    // A user has one role
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
+ 
+    // A user has access to many modules
+    public function modules()
+    {
+        return $this->belongsToMany(Module::class);
     }
 }

@@ -9,7 +9,7 @@ use \DateTimeInterface;
 
 class Role extends Model
 {
-    use SoftDeletes;
+    // use SoftDeletes;
 
     public $table = 'roles';
 
@@ -26,10 +26,18 @@ class Role extends Model
         'deleted_at',
     ];
 
-    protected function serializeDate(DateTimeInterface $date)
-    {
-        return $date->format('Y-m-d H:i:s');
+    // protected function serializeDate(DateTimeInterface $date)
+    // {
+    //     return $date->format('Y-m-d H:i:s');
 
+    // }
+
+
+    // ***** DEFINE RELATIONSHIPS
+    // A role can belong to many users
+    public function users()
+    {
+        return $this->hasMany(User::class);
     }
 
     public function permissions()

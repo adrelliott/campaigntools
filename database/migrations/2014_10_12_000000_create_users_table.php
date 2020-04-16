@@ -22,6 +22,13 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
+
+            // Add foreign keys
+            $table->unsignedbigInteger('organisation_id')->index()->nullable();
+            $table->foreign('organisation_id')->references('id')->on('organisations');
+
+            $table->unsignedbigInteger('role_id')->index()->nullable();
+            $table->foreign('role_id')->references('id')->on('roles');
         });
     }
 

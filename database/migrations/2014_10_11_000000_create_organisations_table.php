@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSegmentsTable extends Migration
+class CreateOrganisationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,12 @@ class CreateSegmentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('segments', function (Blueprint $table) {
+        Schema::create('organisations', function (Blueprint $table) {
             $table->id();
-            $table->string('segment_name')->nullable();
-            $table->longText('segment_description')->nullable();
+            $table->string('organisation_name');
+            $table->string('website')->nullable();
             $table->timestamps();
             $table->softDeletes();
-
-            // Add foreign keys
-            $table->unsignedbigInteger('organisation_id')->index()->nullable();
-            $table->foreign('organisation_id')->references('id')->on('organisations');
-            
-
-           
         });
     }
 
@@ -37,6 +30,6 @@ class CreateSegmentsTable extends Migration
     public function down()
     {
         Schema::disableForeignKeyConstraints();
-        Schema::dropIfExists('segments');
+        Schema::dropIfExists('organisations');
     }
 }
