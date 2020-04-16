@@ -9,6 +9,8 @@ use App\Listmanager\ListModel;
 use App\Listmanager\Segment;
 use App\Listmanager\Tag;
 
+use App\Traits\MultitenantableTrait;
+
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -16,7 +18,7 @@ use \DateTimeInterface;
 
 class Contact extends Model
 {
-    use SoftDeletes;
+    use MultitenantableTrait, SoftDeletes;
 
     protected $hidden = [
         'verified_at', 'supressed_at',

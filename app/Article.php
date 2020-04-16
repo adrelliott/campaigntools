@@ -9,17 +9,21 @@ use App\Listmanager\Contact;
 
 use App\Traits\CategorisableTrait;
 use App\Traits\ContactableTrait;
+use App\Traits\MultitenantableTrait;
+    
 
 use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
 {
-
+    use MultitenantableTrait, SoftDeletes;
+    
     // Allow us to put Articles in categories (using polymorphic relationship)
     use CategorisableTrait;
 
     // Allow us to relate Articles to contacts (using polymorphic relationship)
     use ContactableTrait;
+
 
  	// ******* CREATE RELATIONSHIP MODIFIER METHODS ********
 

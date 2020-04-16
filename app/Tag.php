@@ -4,11 +4,13 @@ namespace App\Listmanager;
 
 use App\Traits\CategorisableTrait;
 use App\Traits\ContactableTrait;
+use App\Traits\MultitenantableTrait;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Tag extends Model
 {
+	use MultitenantableTrait, Softdeletes;
 	
     // Allow us to put Tags in categories (using polymorphic relationship)
     use CategorisableTrait;

@@ -7,11 +7,13 @@ use App\Inboxmag\Article;
 
 use App\Traits\CategorisableTrait;
 use App\Traits\ContactableTrait;
+use App\Traits\MultitenantableTrait;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Issue extends Model
 {
+    use MultitenantableTrait, SoftDeletes;
 
     // Allow us to put Issues in categories (using polymorphic relationship)
     use CategorisableTrait;

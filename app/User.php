@@ -8,6 +8,8 @@ use App\Inboxmag\Magazine;
 use App\Role;
 use App\Module;
 
+use App\Traits\MultitenantableTrait;
+
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -15,8 +17,8 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
-    use Softdeletes;
+    use MultitenantableTrait, Softdeletes, Notifiable;
+
 
     /**
      * The attributes that are mass assignable.

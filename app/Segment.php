@@ -7,11 +7,13 @@ use App\User;
 
 use App\Traits\CategorisableTrait;
 use App\Traits\ContactableTrait;
+use App\Traits\MultitenantableTrait;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Segment extends Model
 {
+	use MultitenantableTrait, Softdeletes;
 
     // Allow us to put Segments in categories (using polymorphic relationship)
     use CategorisableTrait;

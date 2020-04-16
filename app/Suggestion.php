@@ -6,11 +6,13 @@ use App\Inboxmag\Article;
 
 use App\Traits\CategorisableTrait;
 use App\Traits\ContactableTrait;
+use App\Traits\MultitenantableTrait;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Suggestion extends Model
 {
+	use MultitenantableTrait, Softdeletes;
 
     // Allow us to put Suggestions in categories (using polymorphic relationship)
     use CategorisableTrait;

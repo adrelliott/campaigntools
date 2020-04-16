@@ -7,14 +7,17 @@ use App\Listmanager\Contact;
 // use App\Listmanager\Segment;
 
 use App\Traits\ContactableTrait;
+use App\Traits\MultitenantableTrait;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ListModel extends Model
 {
-	use Softdeletes;
-	use ContactableTrait;
+	use MultitenantableTrait, Softdeletes;
+
+    // Allow us to relate Issues to contacts (using polymorphic relationship)
+    use ContactableTrait;
 
     // PHP doesn't allow a class called 'list
     protected $table = 'lists';
