@@ -43,6 +43,18 @@ Route::group([
 	Route::Resource('tags', 'TagController');
 });
 
+// Define routes for Datatables (which can be made into an API)
+Route::group([
+		'prefix' => 'api/v1/listmanager', 
+		'as' => 'api.listmanager.', 
+		'namespace' => 'Api\Listmanager', 
+		'middleware' => ['auth']
+	], function () {
+
+	Route::Resource('lists', 'ListController');
+	// Route::get('lists/datatable', 'ListController@dataTable')->name('api.lists.datatable');
+});
+
 // Define routes for Inboxmag module
 Route::group([
 		'prefix' => 'inboxmag', 

@@ -4,15 +4,20 @@ namespace App\Http\Controllers\Listmanager;
 
 use App\Listmanager\ListModel;
 use App\Listmanager\Category;
+use App\User;
+
 use App\Http\Requests\StoreListRequest;
 use App\Http\Requests\UpdateListRequest;
 use App\Http\Requests\DeleteListRequest;
+
+use Yajra\Datatables\Datatables;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class ListController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -78,13 +83,6 @@ class ListController extends Controller
      */
     public function update(Request $request, ListModel $list)
     {
-        // $request->validateWithBag(
-        //     'listErrors',
-        //     [
-        //         'list_name' => ['required', 'min:3', 'max:255'],
-        //         'list_description' => ['max:255']
-        //     ]
-        // );
         $request->validate([
                 'list_name' => ['required', 'min:3', 'max:255'],
                 'list_description' => ['max:255']
@@ -102,5 +100,13 @@ class ListController extends Controller
     public function destroy(ListModel $list)
     {
         //
+    }
+
+    public function dataTable()
+    {
+        return 'datatable lists';
+        // @todo Look for paramaters to control the query
+        $lists = ListModel::select(['id','list_name','list_description','created_at']);
+        return Datatables::of($lists)->make();
     }
 }

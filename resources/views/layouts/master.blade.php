@@ -27,13 +27,12 @@
       </div><!-- ./row -->
     </div><!-- ./container-fluid -->
 
-    <!-- Optional JavaScript -->
-    <script src="https://unpkg.com/feather-icons"></script>
-
+    <!-- Scripts called by the partials -->
     @stack('plugin-scripts')
     @stack('custom-scripts')
 
-   <script src="/js/app.js"></script>
+    <!-- Script for the app (unused) -->
+   <!-- <script src="/js/app.js"></script> -->
 
   </body>
 </html>
