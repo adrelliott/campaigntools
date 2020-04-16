@@ -9,7 +9,7 @@ use \DateTimeInterface;
 
 class Role extends Model
 {
-    // use SoftDeletes;
+    use SoftDeletes;
 
     public $table = 'roles';
 

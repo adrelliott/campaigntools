@@ -7,6 +7,7 @@ use App\Inboxmag\Article;
 use App\Traits\ContactableTrait;
 use App\Traits\MultitenantableTrait;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model

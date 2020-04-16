@@ -9,12 +9,13 @@ use App\Listmanager\Contact;
 use App\Traits\ContactableTrait;
 use App\Traits\MultitenantableTrait;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ListModel extends Model
 {
-	use MultitenantableTrait, Softdeletes;
+	use MultitenantableTrait, SoftDeletes;
 
     // Allow us to relate Issues to contacts (using polymorphic relationship)
     use ContactableTrait;

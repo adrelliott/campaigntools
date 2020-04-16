@@ -2,10 +2,12 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
 use App\Traits\MultitenantableTrait;
+
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Model;
 
 class Organisation extends Model
 {
-    use MultitenantableTrait, Softdeletes;
+    use MultitenantableTrait, SoftDeletes;
 }

@@ -11,7 +11,7 @@ use App\Traits\CategorisableTrait;
 use App\Traits\ContactableTrait;
 use App\Traits\MultitenantableTrait;
     
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model

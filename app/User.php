@@ -10,6 +10,7 @@ use App\Module;
 
 use App\Traits\MultitenantableTrait;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -17,7 +18,7 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use MultitenantableTrait, Softdeletes, Notifiable;
+    use MultitenantableTrait, SoftDeletes, Notifiable;
 
 
     /**
