@@ -16,29 +16,42 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-
+// Define routes for the public
 Route::get('/', function () {
-    return view('public.home');
-});
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
+    	return view('public.home');
 });
 
 
-Route::group(['prefix' => 'listmanager', 'as' => 'listmanager.', 'namespace' => 'Listmanager'], function () {
+// Define routes for logged in users
+Route::get('/dashboard', 'DashboardController@index')
+	->name('dashboard')
+	->middleware('auth');
 
-	// Route::delete();
+
+// Define routes for Listmanager module
+Route::group([
+		'prefix' => 'listmanager', 
+		'as' => 'listmanager.', 
+		'namespace' => 'Listmanager', 
+		'middleware' => ['auth']
+	], function () {
+
+	// @todo Route::delete();
 	Route::Resource('contacts', 'ContactController');
 	Route::Resource('lists', 'ListController');
 	Route::Resource('segments', 'SegmentController');
 	Route::Resource('tags', 'TagController');
 });
-Route::group(['prefix' => 'inboxmag', 'as' => 'inboxmag.', 'namespace' => 'Inboxmag'], function () {
 
-	// Route::delete();
+// Define routes for Inboxmag module
+Route::group([
+		'prefix' => 'inboxmag', 
+		'as' => 'inboxmag.', 
+		'namespace' => 'Inboxmag',
+		'middleware' => ['auth']
+	], function () {
+
+	// @todo Route::delete();
 	Route::Resource('magazines', 'MagazineController');
 	Route::Resource('issues', 'IssueController');
 	Route::Resource('articles', 'ArticleController');
@@ -46,9 +59,15 @@ Route::group(['prefix' => 'inboxmag', 'as' => 'inboxmag.', 'namespace' => 'Inbox
 	Route::Resource('suggestions', 'SuggestionController');
 });
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Auth'], function () {
+// Define routes for Admin module (only accesible to superadmin)
+Route::group([
+		'prefix' => 'admin', 
+		'as' => 'admin.', 
+		'namespace' => 'Auth',
+		'middleware' => ['auth'] // @todo make this accesible to only superadmin
+	], function () {
 
-	// Route::delete();
+	// @todo Route::delete();
 	Route::Resource('users', 'UserController');
 });
 

@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>CampaignTools</title>
+        <title>CampaignTools.io</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -68,24 +68,27 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                        <a href="{{ route('dashboard') }}">Dashboard</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
+                            <a href="{{ route('register') }}">Sign Up</a>
                         @endif
                     @endauth
                 </div>
             @endif
 
             <div class="content">
+                @auth
+                    <h3>You're logged in! Go to <a href="/dashboard">your dashboard</a></h3>
+                @endauth
                 <div class="title m-b-md">
                     CampaignTools
                 </div>
 
                 <div class="links">
-                    <p>Finally, a simple way to create email campaigns that actually work</p>
+                    <p>Finally, an easy way to create email campaigns that actually work</p>
                 </div>
             </div>
         </div>
