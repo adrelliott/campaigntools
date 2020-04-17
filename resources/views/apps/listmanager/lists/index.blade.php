@@ -9,5 +9,6 @@
 @endsection
 
 @section('body')
-		@include('apps.listmanager.lists.listTable')
+	<p class="text-muted pl-2">{{ $lists->count() }} lists found.</p>
+	@include('apps.listmanager.lists.listTable')
 @endsection

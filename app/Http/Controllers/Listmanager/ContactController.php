@@ -19,7 +19,7 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $contacts = Contact::all()->simplePaginate(25);
+        $contacts = Contact::orderBy('last_name', 'ASC')->paginate(25);
         return view('apps.listmanager.contacts.index', compact('contacts'));
     }
 
@@ -55,7 +55,6 @@ class ContactController extends Controller
      */
     public function show(Contact $contact)
     {
-        // $contact->load('articles', 'categories', 'issues',  'tags', 'subscribesTo', 'hasClicked');
         return view('apps.listmanager.contacts.show', compact('contact'));
     }
 

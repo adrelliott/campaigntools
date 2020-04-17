@@ -1,36 +1,15 @@
-@extends('layouts.master')
+@extends('apps._layouts.listView')
 
-@section('main')
-<div class="row mb-4">
-  <a href="/listmanager/contacts/create">
-    <button type="button" class="btn btn-lg btn-outline-dark float-right">Create Contact</button>
-  </a>
-</div>
-<div class="row">
-  <table class="table table-sm">
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Email</th>
-    </tr>
-  </thead>
-  <tbody>
-    @foreach($contacts as $contact)
-        <tr>
-          <th scope="row">{{ $contact->id }}</th>
-          <td>{{ $contact->first_name }}</td>
-          <td>{{ $contact->last_name }}</td>
-          <td><a href="/listmanager/contacts/{{ $contact->id }}">{{ $contact->email }}</a></td>
-        </tr>
-    @endforeach
-  </tbody>
-</table>
-</div>
+@section('title')
+    <h1 class="float-left">All your Contacts</h1>
+    <a href="{{ route('listmanager.contacts.create') }}" >
+        <button type="button" class="btn btn-lg btn-primary float-right">Add New Contact(s)</button>
+    </a>
+    <div class="clearfix"></div>
+    <code>This should submit to a nested route - i.e. lists/list->id/contacts/create</code>
+@endsection
 
-
-//add new
-
-//upload
+@section('body')
+    <p class="text-muted pl-2">{{ $contacts->count() }} contacts found.</p>
+    @include('apps.listmanager.contacts.contactTable')
 @endsection

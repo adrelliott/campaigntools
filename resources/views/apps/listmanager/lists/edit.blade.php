@@ -3,14 +3,13 @@
 
 @section('title')
 	<h1 class="float-left">Edit your list</h1>
-	<a href="{{ route('listmanager.contacts.create') }}" >
-		<button type="button" class="btn btn-lg btn-primary float-right">Add Contacts</button>
-	</a>
 	<div class="clearfix"></div>
+	<h3 class="mt-3">List Name: <span class="text-muted">{{ $list->list_name }}</span></h3>
 @endsection
 
 
 @section('body')
+<code>What happens if they submit the same name - it's not uniqie but it's fine. So how do i vope with tat</code>
 	<form method="POST" action="{{ route('listmanager.lists.update', $list->id) }}" enctype="multipart/form-data">
 		@csrf
 		@method('PUT')
