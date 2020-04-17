@@ -5,4 +5,10 @@
 @import 'variables';
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+@import 'node_modules/bootstrap/scss/bootstrap';
+
+// Edits
+.table th, .table td {
+	vertical-align: middle;
+	padding-left: 1rem;
+}
