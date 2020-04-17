@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Inboxmag;
 
-use App\Http\Controllers\Controller;
+use App\Category;
 
-use App\Inboxmag\Category;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller

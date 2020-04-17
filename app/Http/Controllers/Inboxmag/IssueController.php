@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Inboxmag;
 
-use App\Http\Controllers\Controller;
+use App\Issue;
 
-use App\Inboxmag\Issue;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class IssueController extends Controller

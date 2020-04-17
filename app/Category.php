@@ -1,8 +1,6 @@
 <?php
 
-namespace App\Inboxmag;
-
-use App\Inboxmag\Article;
+namespace App;
 
 use App\Traits\ContactableTrait;
 use App\Traits\MultitenantableTrait;

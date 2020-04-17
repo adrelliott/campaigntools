@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers\Listmanager;
 
-use App\Listmanager\ListModel;
-use App\Listmanager\Category;
+use App\ListModel;
+use App\Category;
 use App\User;
 
 use App\Http\Requests\StoreListRequest;
 use App\Http\Requests\UpdateListRequest;
 use App\Http\Requests\DeleteListRequest;
-
-use Yajra\Datatables\Datatables;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -102,11 +100,28 @@ class ListController extends Controller
         //
     }
 
-    public function dataTable()
+
+    public function uploadCreate(ListModel $list)
     {
-        return 'datatable lists';
-        // @todo Look for paramaters to control the query
-        $lists = ListModel::select(['id','list_name','list_description','created_at']);
-        return Datatables::of($lists)->make();
+        // return the form to upload a doc
     }
+
+    public function uploadStore(ListModel $list)
+    {
+        // Process the csv and store details
+    }
+
+    public function deleteConfirm()
+    {
+        // Load a view that asks for confirmation
+    }
+    
+
+    // public function dataTable()
+    // {
+    //     return 'datatable lists';
+    //     // @todo Look for paramaters to control the query
+    //     $lists = ListModel::select(['id','list_name','list_description','created_at']);
+    //     return Datatables::of($lists)->make();
+    // }
 }

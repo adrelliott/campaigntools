@@ -1,10 +1,6 @@
 <?php
 
-namespace App\Inboxmag;
-
-use App\Inboxmag\Issue;
-use App\Listmanager\Contact;
-use App\User;
+namespace App;
 
 use App\Traits\CategorisableTrait;;
 use App\Traits\ContactableTrait;

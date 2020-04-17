@@ -2,7 +2,7 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Inboxmag\Magazine;
+use App\Magazine;
 use Faker\Generator as Faker;
 
 $factory->define(Magazine::class, function (Faker $faker) {

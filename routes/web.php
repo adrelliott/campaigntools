@@ -28,6 +28,10 @@ Route::get('/dashboard', 'DashboardController@index')
 	->middleware('auth');
 
 
+// =============================================================================
+// ----------------------- THE APP ---------------------------------------------
+// =============================================================================
+
 // Define routes for Listmanager module
 Route::group([
 		'prefix' => 'listmanager', 
@@ -36,6 +40,14 @@ Route::group([
 		'middleware' => ['auth']
 	], function () {
 
+	// Custom routes
+	Route::get('/contacts/{contact}/delete', 'ContactController@deleteConfirm')->name('contacts.delete');
+	Route::get('/lists/{list}/upload', 'ListController@uploadCreate')->name('lists.upload');
+	Route::post('/lists/{list}/upload', 'ListController@uploadStore')->name('lists.upload');
+	Route::get('/lists/{list}/delete', 'ListController@deleteConfirm')->name('lists.delete');
+	Route::get('/segments/{segment}/delete', 'SegmentController@deleteConfirm')->name('segments.delete');
+	Route::get('/tags/{tag}/delete', 'TagController@deleteConfirm')->name('tags.delete');
+
 	// @todo Route::delete();
 	Route::Resource('contacts', 'ContactController');
 	Route::Resource('lists', 'ListController');
@@ -43,17 +55,6 @@ Route::group([
 	Route::Resource('tags', 'TagController');
 });
 
-// Define routes for Datatables (which can be made into an API)
-Route::group([
-		'prefix' => 'api/v1/listmanager', 
-		'as' => 'api.listmanager.', 
-		'namespace' => 'Api\Listmanager', 
-		'middleware' => ['auth']
-	], function () {
-
-	Route::Resource('lists', 'ListController');
-	// Route::get('lists/datatable', 'ListController@dataTable')->name('api.lists.datatable');
-});
 
 // Define routes for Inboxmag module
 Route::group([
@@ -75,12 +76,63 @@ Route::group([
 Route::group([
 		'prefix' => 'admin', 
 		'as' => 'admin.', 
-		'namespace' => 'Auth',
+		'namespace' => 'Admin',
 		'middleware' => ['auth'] // @todo make this accesible to only superadmin
 	], function () {
 
 	// @todo Route::delete();
 	Route::Resource('users', 'UserController');
+});
+
+
+
+
+// =============================================================================
+// ----------------------- API -------------------------------------------------
+// =============================================================================
+
+// Define routes for Listmanager module
+Route::group([
+		'prefix' => 'api/v1/listmanager', 
+		'as' => 'api.listmanager.', 
+		'namespace' => 'Api\V1\Listmanager', 
+		'middleware' => ['auth']
+	], function () {
+
+	// @todo Route::delete();
+	// Route::Resource('contacts', 'ContactController');
+	Route::Resource('lists', 'ListController');
+	// Route::Resource('segments', 'SegmentController');
+	// Route::Resource('tags', 'TagController');
+});
+
+
+// Define routes for Inboxmag module
+Route::group([
+		'prefix' => 'api/v1/inboxmag', 
+		'as' => 'api.inboxmag.', 
+		'namespace' => 'Api\V1\Inboxmag',
+		'middleware' => ['auth']
+	], function () {
+
+	// @todo Route::delete();
+	// Route::Resource('magazines', 'MagazineController');
+	// Route::Resource('issues', 'IssueController');
+	// Route::Resource('articles', 'ArticleController');
+	// Route::Resource('categories', 'CategoryController');
+	// Route::Resource('suggestions', 'SuggestionController');
+});
+
+// Define routes for Admin module (only accesible to superadmin)
+Route::group([
+		'prefix' => 'api/v1/admin', 
+		'as' => 'api.admin.', 
+		'namespace' => 'Api\V1\Auth',
+		'middleware' => ['auth'] // @todo make this accesible to only superadmin
+	], function () {
+
+	// @todo Route::delete();
+	// Route::Resource('users', 'UserController');
 });
 
 

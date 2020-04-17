@@ -19,10 +19,10 @@ class InboxMagSeeder extends Seeder
         foreach ($users as $user) {
 
             // Create some magazines for this user
-            $magazines = factory(App\Inboxmag\Magazine::class, 3)->create(['user_id' => $user->id]);
+            $magazines = factory(App\Magazine::class, 3)->create(['user_id' => $user->id]);
 
             // Get all current contacts - we'll add them as contacts
-            $contacts = App\Listmanager\Contact::where('user_id', $user->id)->get();
+            $contacts = App\Contact::where('user_id', $user->id)->get();
 
             // Now loop through each magazine and create subscribers, issues, 
             foreach ($magazines as $magazine) {
@@ -31,23 +31,23 @@ class InboxMagSeeder extends Seeder
                 $magazine->addSubscribers($subscribers);
         
                 // Add issues
-                $issues = factory(App\Inboxmag\Issue::class, 10)->create();
+                $issues = factory(App\Issue::class, 10)->create();
                 $magazine->addIssues($issues);
 
                 // Now loop though each issue and add some articles
                 foreach ($issues as $issue) {
-                	$articles = factory(App\Inboxmag\Article::class, 5)->create(['issue_id' => $issue->id]);
+                	$articles = factory(App\Article::class, 5)->create(['issue_id' => $issue->id]);
                     $issue->addArticles($articles);
                 
                     // Now add some categories & suggestions to each article
 	                foreach ($articles as $article) {
 	                	// Add a category
-	                	$categories = factory(App\Inboxmag\Category::class, 3)
+	                	$categories = factory(App\Category::class, 3)
                             ->create();
                             $article->addCategories($categories);
 
                         // Associate this article with a suggestion
-                            $suggestion = factory(App\Inboxmag\Suggestion::class)->create();
+                            $suggestion = factory(App\Suggestion::class)->create();
                             $article->claimSuggestion($suggestion);
 	                }
             	}

@@ -13,12 +13,14 @@ class SuperAdminUserSeeder extends Seeder
     {
         // Create our org
         $organisation = factory(App\Organisation::class)->create([
+            'id'    => 1322,
             'organisation_name' => 'Oblong Media',
             'website'   => 'oblonghq.com'
         ]);
 
         // Create a super admin 
         $superadmin = factory(App\User::class)->create([
+            'id' => 6212,
             'name' => 'Al Elliott',
             'email' => 'admin@admin.com',
             'email_verified_at' => now(),

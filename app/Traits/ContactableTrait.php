@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Traits;
-use App\Listmanager\Contact;
+use App\Contact;
 
 trait ContactableTrait {
 

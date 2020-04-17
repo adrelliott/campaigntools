@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Listmanager;
 
+use App\Segment;
+
 use App\Http\Controllers\Controller;
-use App\Listmanager\Segment;
 use Illuminate\Http\Request;
 
 class SegmentController extends Controller

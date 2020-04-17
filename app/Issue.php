@@ -1,9 +1,6 @@
 <?php
 
-namespace App\Inboxmag;
-
-use App\Inboxmag\Magazine;
-use App\Inboxmag\Article;
+namespace App;
 
 use App\Traits\CategorisableTrait;
 use App\Traits\ContactableTrait;

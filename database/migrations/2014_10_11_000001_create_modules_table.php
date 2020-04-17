@@ -18,6 +18,7 @@ class CreateModulesTable extends Migration
             $table->string('module_name');
             // $table->string('path');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

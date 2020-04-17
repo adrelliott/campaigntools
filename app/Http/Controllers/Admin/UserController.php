@@ -1,9 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Admin;
+
+use App\User;
+use App\ListModel;
+use App\Magazine;
 
 use App\Http\Controllers\Controller;
-use App\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -48,7 +51,9 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return view('apps.admin.users.show', compact('user'));
+        $lists = ListModel::all();
+        $magazines = Magazine::all();
+        return view('apps.admin.users.show', compact('user', 'lists', 'magazines'));
     }
 
     /**

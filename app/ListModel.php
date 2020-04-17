@@ -1,10 +1,6 @@
 <?php
 
-namespace App\Listmanager;
-
-use App\User;
-use App\Listmanager\Contact;
-// use App\Listmanager\Segment;
+namespace App;
 
 use App\Traits\ContactableTrait;
 use App\Traits\MultitenantableTrait;
@@ -31,14 +27,14 @@ class ListModel extends Model
 
     // ***** DEFINE METHODS
     public function getOwner()
-    {
-    	return $this->user();
+    {	
+        return $this->organisation();
     }
 
     // Count contacts that:
     // - HAVE been verfified (verified_at is not NULL)
     // - HAVE NOT been supressed (supressed_at is NULL)
-    public function getActiveUsers()
+    public function getActiveUserCount()
     {
         $activeUsers = $this->getContacts()
             ->whereNotNull('verified_at')
@@ -51,10 +47,10 @@ class ListModel extends Model
 
 
     // ***** DEFINE RELATIONSHIPS
-    // A list belongs to just one user
-    public function user()
+    // A list belongs to just one organisation
+    public function organisation()
     {
-    	return $this->belongsTo(User::class);
+    	return $this->belongsTo(Organisation::class);
     }
 
     // SEE ALSO: ContactableTrait

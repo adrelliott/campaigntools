@@ -2,7 +2,7 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Listmanager\Segment;
+use App\Segment;
 use Faker\Generator as Faker;
 
 $factory->define(Segment::class, function (Faker $faker) {

@@ -1,9 +1,6 @@
 <?php
 
-namespace App\Listmanager;
-
-use App\Listmanager\Contact;
-use App\User;
+namespace App;
 
 use App\Traits\CategorisableTrait;
 use App\Traits\ContactableTrait;

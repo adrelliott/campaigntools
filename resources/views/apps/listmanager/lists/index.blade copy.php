@@ -7,7 +7,7 @@
   </a>
 </div>
 <div class="row">
-  @include('apps.listmanager.datatables.lists')
+  
 </div>
 <div class="row">
   <table class="table table-sm">

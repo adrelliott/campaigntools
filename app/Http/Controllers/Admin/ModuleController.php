@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Module;
+
 use Illuminate\Http\Request;
 
 class ModuleController extends Controller

@@ -38,11 +38,6 @@
     "autoload": {
         "psr-4": {
             "App\\": "app/",
-            "App\\Academy\\": "app/",
-            "App\\Listmanager\\": "app/",
-            "App\\Emailgeeks\\": "app/",
-            "App\\Inboxmag\\": "app/",
-            "App\\Listswap\\": "app/",
             "App\\Traits\\": "app/Traits"
         },
         "classmap": [

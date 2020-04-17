@@ -1,11 +1,6 @@
 <?php
 
-namespace App\Inboxmag;
-
-use App\Inboxmag\Category;
-use App\Inboxmag\Suggestion;
-use App\Inboxmag\Issue;
-use App\Listmanager\Contact;
+namespace App;
 
 use App\Traits\CategorisableTrait;
 use App\Traits\ContactableTrait;

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Listmanager;
 
-use App\Listmanager\Contact;
-use App\Listmanager\Segment;
-use App\Listmanager\Tag;
-use App\Listmanager\ListModel;
+use App\Contact;
+use App\Segment;
+use App\Tag;
+use App\ListModel;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;

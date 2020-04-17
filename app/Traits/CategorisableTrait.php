@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Traits;
-use App\Inboxmag\Category;
+use App\Category;
 
 trait CategorisableTrait {
 

@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Listmanager;
 
+use App\Tag;
+
 use App\Http\Controllers\Controller;
-use App\Listmanager\Tag;
 use Illuminate\Http\Request;
 
 class TagController extends Controller

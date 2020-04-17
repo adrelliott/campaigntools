@@ -2,7 +2,7 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Listmanager\Contact;
+use App\Contact;
 use Carbon\Carbon;
 use Faker\Generator as Faker;
 

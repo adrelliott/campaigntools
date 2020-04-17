@@ -1,13 +1,6 @@
 <?php
 
-namespace App\Listmanager;
-
-use App\Inboxmag\Article;
-use App\Inboxmag\Magazine;
-use App\User;
-use App\Listmanager\ListModel;
-use App\Listmanager\Segment;
-use App\Listmanager\Tag;
+namespace App;
 
 use App\Traits\MultitenantableTrait;
 

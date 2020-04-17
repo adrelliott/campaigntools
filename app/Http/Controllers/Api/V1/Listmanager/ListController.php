@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Api\V1\Listmanager;
 
-use App\Http\Controllers\Controller;
 use App\ListModel;
+
+use Yajra\Datatables\Datatables;
+
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class ListController extends Controller
@@ -15,9 +18,10 @@ class ListController extends Controller
      */
     public function index()
     {
-        return 'datatable lists';
+        return Datatables::of(Listmodel::query())->make(true);
         // @todo Look for paramaters to control the query
-        $lists = ListModel::select(['id','list_name','list_description','created_at']);
+        $lists = ListModel::select(['id', 'list_name','list_description']);
+        $lists = ListModel::all();
         return Datatables::of($lists)->make();
     }
 
