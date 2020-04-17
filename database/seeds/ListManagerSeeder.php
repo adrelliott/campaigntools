@@ -28,6 +28,9 @@ class ListManagerSeeder extends Seeder
                     'organisation_id' => $organisation->id,
                 ]); 
 
+                // Add these contacts to this list
+                $list->addContacts($contacts);
+
                 // now apply some tags to these contacts
                 foreach ( $contacts as $contact ) {
                     $tags = factory(App\Tag::class, 4)->create();

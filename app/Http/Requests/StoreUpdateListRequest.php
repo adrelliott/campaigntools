@@ -6,7 +6,7 @@ use App\Listmanager\ListModel;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreListRequest extends FormRequest
+class StoreUpdateListRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,8 +28,13 @@ class StoreListRequest extends FormRequest
         return [
             'list_name' => [
                 'required',
-                'unique:lists'
+                'unique:lists',
+                'max:150',
+                'min:3'
             ],
-        ];
+            'list_description' => [
+                'max:255'
+            ]
+        ];  
     }
 }

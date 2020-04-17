@@ -6,8 +6,7 @@ use App\ListModel;
 use App\Category;
 use App\User;
 
-use App\Http\Requests\StoreListRequest;
-use App\Http\Requests\UpdateListRequest;
+use App\Http\Requests\StoreUpdateListRequest;
 use App\Http\Requests\DeleteListRequest;
 
 use App\Http\Controllers\Controller;
@@ -23,7 +22,7 @@ class ListController extends Controller
      */
     public function index()
     {
-        $lists = ListModel::all();
+        $lists = ListModel::orderBy('updated_at', 'DESC')->paginate(15);
         return view('apps.listmanager.lists.index', compact('lists'));
     }
 
@@ -43,11 +42,10 @@ class ListController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreListRequest $request)
+    public function store(StoreUpdateListRequest $request)
     {
         $list = ListModel::create($request->all());
-        // return redirect()->route('listmanager.lists.index');
-        return redirect('/listmanager/lists');
+        return redirect(route('listmanager.lists.index'));
     }
 
     /**
@@ -58,7 +56,8 @@ class ListController extends Controller
      */
     public function show(ListModel $list)
     {
-        return view('apps.listmanager.lists.show', compact('list'));
+        $contacts = $list->getContacts()->paginate(10);
+        return view('apps.listmanager.lists.show', compact('list', 'contacts'));
     }
 
     /**
@@ -79,14 +78,10 @@ class ListController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ListModel $list)
+    public function update(StoreUpdateListRequest $request, ListModel $list)
     {
-        $request->validate([
-                'list_name' => ['required', 'min:3', 'max:255'],
-                'list_description' => ['max:255']
-        ]);
         $list->update($request->all());
-        return redirect('/listmanager/lists');
+        return redirect(route('listmanager.lists.index'));
     }
 
     /**
@@ -116,12 +111,4 @@ class ListController extends Controller
         // Load a view that asks for confirmation
     }
     
-
-    // public function dataTable()
-    // {
-    //     return 'datatable lists';
-    //     // @todo Look for paramaters to control the query
-    //     $lists = ListModel::select(['id','list_name','list_description','created_at']);
-    //     return Datatables::of($lists)->make();
-    // }
 }

@@ -19,7 +19,7 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $contacts = Contact::all();
+        $contacts = Contact::all()->simplePaginate(25);
         return view('apps.listmanager.contacts.index', compact('contacts'));
     }
 

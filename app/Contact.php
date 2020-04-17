@@ -36,8 +36,7 @@ class Contact extends Model
         'last_name',
         'first_name',
         'email',
-        'postal_code',
-        'verified_at',
+        'postal_code'
     ];
 
 
@@ -67,6 +66,29 @@ class Contact extends Model
     {
         return $this->tags()->attach($tag);
     }
+
+
+
+    // ******* DEFINE ACCESSORS/MUTATORS ********
+    public function getFullName()
+    {
+        return ucwords($this->first_name) . ' ' . ucwords($this->last_name);
+    }
+
+    public function getContactStatus()
+    {
+        $status = [];
+
+        if ( $this->verified_at )
+            $status[] = 'Active';
+     
+        if ( $this->suppressed_at )
+            $status[] = 'Unsubscribed';
+
+        return implode('&', $status);
+    }
+
+
 
 
 

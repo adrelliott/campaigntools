@@ -1,23 +1,32 @@
-@extends('layouts.master')
+@extends('apps._layouts.standardLayout')
 
-@section('main')
-<div class="jumbotron">
-  <h1>Show list details</h1>
-  <p><strong>ID:</strong> {{ $list->id }}</p>
-  <p><strong>Name:</strong> <a href="/listmanager/lists/{{ $list->id}}">{{ $list->list_name }}</a></p>
-  <p><strong>Description:</strong> {{ $list->description }}</p>
-  <hr>
-  <h2>Related:</h2>
-  <p><strong>List owner:</strong> <a href="/admin/users/{{ $list->getOwner->id}}">{{ $list->getOwner->name }}</a></p>
-  <h3>Contacts</h3>
-  <ol>
-  	@forelse($list->getContacts as $contact)
-  		<li><a href="/listmanager/contacts/{{ $contact->id }}">[{{ $contact->id }}] {{ $contact->email }}</a></li>
-    @empty
-      <i>No records found</i>
-  	@endforelse
-  </ol>
-</div>
-<hr>
-{{ dump($list) }}
+
+@section('title')
+    <h1 class="float-left">List details</h1>
+    <a href="{{ route('listmanager.contacts.create') }}" >
+        <button type="button" class="btn btn-lg btn-primary float-right">Add Contacts</button>
+    </a>
+    <div class="clearfix"></div>
 @endsection
+
+
+@section('body')
+    <div class="mt-2">
+        <p class="text-muted">{{ $list->getActiveUserCount() }} active contacts found</p>
+        @include('apps.listmanager.contacts.contactTable')
+    </div>
+@endsection
+
+
+@section('sidebar')
+    <h3 class="">List Details</h3>
+    <hr >
+    <p class="mt-3 mb-0"><strong>Name:</strong> {{ $list->list_name }}</p>
+    <p class="mt-3 mb-0"><strong>Description:</strong> {{ $list->list_description }}</p>
+    <hr class="mb-3">
+    <p class="mb-0"><strong>Created:</strong> {{ $list->created_at }}</p>
+    <p class="mb-0"><strong>Updated:</strong> {{ $list->created_at }}</p>
+    <p class="mb-0"><strong>Verified Contacts:</strong> {{$list->getActiveUserCount()}}</p>
+    <p class="mb-0"><strong>Unsusbcribed Contacts:</strong> {{$list->getSuppressedUserCount()}}</p>
+@endsection
+

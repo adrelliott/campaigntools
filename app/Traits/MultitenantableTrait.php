@@ -10,7 +10,6 @@ trait MultitenantableTrait {
 	public static function bootMultitenantableTrait()
 	{
 		if ( auth()->check() ) {
-
 			// Add org ID to every record created
 			static::creating(function ($model) {
 				$model->organisation_id = auth()->user()->organisation_id;

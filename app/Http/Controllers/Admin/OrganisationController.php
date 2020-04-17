@@ -14,7 +14,8 @@ class OrganisationController extends Controller
      */
     public function index()
     {
-        //
+        
+        //shows organisations
     }
 
     /**
@@ -46,7 +47,7 @@ class OrganisationController extends Controller
      */
     public function show(Organisation $organisation)
     {
-        //
+        return view('apps.admin.organisation.show', compact('organisation'));
     }
 
     /**
@@ -57,7 +58,7 @@ class OrganisationController extends Controller
      */
     public function edit(Organisation $organisation)
     {
-        //
+        return view('apps.admin.organisation.edit', compact('organisation'));   
     }
 
     /**

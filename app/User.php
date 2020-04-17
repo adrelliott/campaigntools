@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Traits\MultitenantableTrait;
+use App\Traits\DateAccessorTrait;
 
 use Carbon\Carbon;
 
@@ -13,7 +14,7 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use MultitenantableTrait, SoftDeletes, Notifiable;
+    use MultitenantableTrait, DateAccessorTrait, SoftDeletes, Notifiable;
 
     protected $fillable = [
         'name', 'email', 'password',
@@ -41,11 +42,7 @@ class User extends Authenticatable
         return ($this->email_verified_at) ? "Yes" : "No";
     }
 
-    // Return a readable version of the timestamp
-    public function getCreatedAtAttribute($value)
-    {
-        return Carbon::create($value)->toFormattedDateString();
-    }
+    
 
 
     // ***** DEFINE RELATIONSHIPS
