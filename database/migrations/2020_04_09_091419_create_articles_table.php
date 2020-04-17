@@ -38,8 +38,8 @@ class CreateArticlesTable extends Migration
             $table->foreign('suggestion_id')->references('id')->on('suggestions');
             
             // Add foreign keys
-            $table->unsignedbigInteger('user_id')->index()->nullable();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedbigInteger('organisation_id')->index()->nullable();
+            $table->foreign('organisation_id')->references('id')->on('organisations');
         });
     }
 

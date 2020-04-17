@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
@@ -26,10 +25,18 @@ class Role extends Model
         'deleted_at',
     ];
 
-    protected function serializeDate(DateTimeInterface $date)
-    {
-        return $date->format('Y-m-d H:i:s');
+    // protected function serializeDate(DateTimeInterface $date)
+    // {
+    //     return $date->format('Y-m-d H:i:s');
 
+    // }
+
+
+    // ***** DEFINE RELATIONSHIPS
+    // A role can belong to many users
+    public function users()
+    {
+        return $this->hasMany(User::class);
     }
 
     public function permissions()

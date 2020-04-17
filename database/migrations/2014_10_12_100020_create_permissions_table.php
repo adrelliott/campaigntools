@@ -15,6 +15,8 @@ class CreatePermissionsTable extends Migration
     {
         Schema::create('permissions', function (Blueprint $table) {
             $table->id();
+            $table->string('permission_name');
+            $table->timestamps();
             $table->softDeletes();
         });
     }
@@ -26,6 +28,8 @@ class CreatePermissionsTable extends Migration
      */
     public function down()
     {
+        
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('permissions');
     }
 }

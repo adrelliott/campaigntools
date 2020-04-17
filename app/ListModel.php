@@ -1,34 +1,45 @@
 <?php
 
-namespace App\Listmanager;
-
-use App\User;
-use App\Listmanager\Contact;
-// use App\Listmanager\Segment;
+namespace App;
 
 use App\Traits\ContactableTrait;
+use App\Traits\MultitenantableTrait;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Model;
 
 class ListModel extends Model
 {
-	use Softdeletes;
-	use ContactableTrait;
+	use MultitenantableTrait, SoftDeletes;
+
+    // Allow us to relate Issues to contacts (using polymorphic relationship)
+    use ContactableTrait;
 
     // PHP doesn't allow a class called 'list
     protected $table = 'lists';
 
     // Allow mass assignment for:
     protected $fillable = [
-        'list_name', 'list_description'
+        'list_name', 
+        'list_description'
     ];
 
 
     // ***** DEFINE METHODS
     public function getOwner()
+    {	
+        return $this->organisation();
+    }
+
+    // Count contacts that:
+    // - HAVE been verfified (verified_at is not NULL)
+    // - HAVE NOT been supressed (supressed_at is NULL)
+    public function getActiveUserCount()
     {
-    	return $this->user();
+        $activeUsers = $this->getContacts()
+            ->whereNotNull('verified_at')
+            ->whereNull('supressed_at');
+        return $activeUsers->count();
     }
 
     // SEE ALSO: ContactableTrait for other methods
@@ -36,10 +47,10 @@ class ListModel extends Model
 
 
     // ***** DEFINE RELATIONSHIPS
-    // A list belongs to just one user
-    public function user()
+    // A list belongs to just one organisation
+    public function organisation()
     {
-    	return $this->belongsTo(User::class);
+    	return $this->belongsTo(Organisation::class);
     }
 
     // SEE ALSO: ContactableTrait

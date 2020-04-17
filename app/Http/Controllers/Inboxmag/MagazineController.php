@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Inboxmag;
 
-use App\Http\Controllers\Controller;
+use App\Magazine;
 
-use App\Inboxmag\Magazine;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class MagazineController extends Controller

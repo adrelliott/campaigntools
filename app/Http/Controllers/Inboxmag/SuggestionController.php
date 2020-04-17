@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Inboxmag;
 
+use App\Suggestion;
+
 use App\Http\Controllers\Controller;
-use App\Inboxmag\Suggestion;
 use Illuminate\Http\Request;
 
 class SuggestionController extends Controller

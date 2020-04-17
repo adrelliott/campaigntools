@@ -1,0 +1,13 @@
+<?php
+
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+
+use App\Organisation;
+use Faker\Generator as Faker;
+
+$factory->define(Organisation::class, function (Faker $faker) {
+    return [
+        'organisation_name' => $faker->company,
+        'website'	=> $faker->domainName
+    ];
+});

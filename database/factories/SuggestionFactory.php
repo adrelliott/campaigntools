@@ -2,7 +2,7 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Inboxmag\Suggestion;
+use App\Suggestion;
 use Faker\Generator as Faker;
 
 $factory->define(Suggestion::class, function (Faker $faker) {

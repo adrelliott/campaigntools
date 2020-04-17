@@ -1,14 +1,17 @@
 <?php
 
-namespace App\Listmanager;
+namespace App;
 
 use App\Traits\CategorisableTrait;
 use App\Traits\ContactableTrait;
+use App\Traits\MultitenantableTrait;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Tag extends Model
 {
+	use MultitenantableTrait, SoftDeletes;
 	
     // Allow us to put Tags in categories (using polymorphic relationship)
     use CategorisableTrait;

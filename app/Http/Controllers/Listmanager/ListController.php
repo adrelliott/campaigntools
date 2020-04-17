@@ -2,13 +2,20 @@
 
 namespace App\Http\Controllers\Listmanager;
 
-use App\Listmanager\ListModel;
+use App\ListModel;
+use App\Category;
+use App\User;
+
+use App\Http\Requests\StoreListRequest;
+use App\Http\Requests\UpdateListRequest;
+use App\Http\Requests\DeleteListRequest;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class ListController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -36,9 +43,11 @@ class ListController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreListRequest $request)
     {
-        //
+        $list = ListModel::create($request->all());
+        // return redirect()->route('listmanager.lists.index');
+        return redirect('/listmanager/lists');
     }
 
     /**
@@ -60,7 +69,7 @@ class ListController extends Controller
      */
     public function edit(ListModel $list)
     {
-        //
+        return view('apps.listmanager.lists.edit', compact('list'));
     }
 
     /**
@@ -72,7 +81,12 @@ class ListController extends Controller
      */
     public function update(Request $request, ListModel $list)
     {
-        //
+        $request->validate([
+                'list_name' => ['required', 'min:3', 'max:255'],
+                'list_description' => ['max:255']
+        ]);
+        $list->update($request->all());
+        return redirect('/listmanager/lists');
     }
 
     /**
@@ -85,4 +99,29 @@ class ListController extends Controller
     {
         //
     }
+
+
+    public function uploadCreate(ListModel $list)
+    {
+        // return the form to upload a doc
+    }
+
+    public function uploadStore(ListModel $list)
+    {
+        // Process the csv and store details
+    }
+
+    public function deleteConfirm()
+    {
+        // Load a view that asks for confirmation
+    }
+    
+
+    // public function dataTable()
+    // {
+    //     return 'datatable lists';
+    //     // @todo Look for paramaters to control the query
+    //     $lists = ListModel::select(['id','list_name','list_description','created_at']);
+    //     return Datatables::of($lists)->make();
+    // }
 }

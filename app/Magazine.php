@@ -1,19 +1,18 @@
 <?php
 
-namespace App\Inboxmag;
-
-use App\Inboxmag\Issue;
-use App\Listmanager\Contact;
-use App\User;
+namespace App;
 
 use App\Traits\CategorisableTrait;;
 use App\Traits\ContactableTrait;
+use App\Traits\MultitenantableTrait;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 
 class Magazine extends Model
 {
-    
+    use MultitenantableTrait, SoftDeletes;
+
     // Allow us to put magazines in categories (using polymorphic relationship)
     use CategorisableTrait;
 

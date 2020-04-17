@@ -1,16 +1,17 @@
 <?php
 
-namespace App\Inboxmag;
-
-use App\Inboxmag\Article;
+namespace App;
 
 use App\Traits\CategorisableTrait;
 use App\Traits\ContactableTrait;
+use App\Traits\MultitenantableTrait;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 
 class Suggestion extends Model
 {
+	use MultitenantableTrait, SoftDeletes;
 
     // Allow us to put Suggestions in categories (using polymorphic relationship)
     use CategorisableTrait;

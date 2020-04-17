@@ -15,8 +15,8 @@ class CreateContactablesTable extends Migration
     {
         Schema::create('contactables', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('contact_id');
-            $table->unsignedBigInteger('contactable_id');
+            $table->unsignedBigInteger('contact_id')->index();
+            $table->unsignedBigInteger('contactable_id')->index();
             $table->string('contactable_type');
             $table->timestamps();
             $table->softDeletes();
