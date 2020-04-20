@@ -1,4 +1,4 @@
-@extends('apps._layouts.listView')
+@extends('apps._layouts.fullWidth')
 
 @section('title')
     <h1 class="float-left">All your Contacts</h1>

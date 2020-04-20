@@ -33,7 +33,8 @@ class ListController extends Controller
      */
     public function create()
     {
-        return view('apps.listmanager.lists.create');
+        return view('apps.listmanager.lists.createWizard');
+        // return view('apps.listmanager.lists.create');
     }
 
     /**

@@ -1,4 +1,4 @@
-@extends('apps._layouts.standardLayout')
+@extends('apps._layouts.withSidebar')
 
 
 @section('title')
