@@ -1,9 +1,9 @@
-@extends('apps._layouts.withSidebar')
+@extends('apps._layouts.wizardView')
 
 
 @section('title')
 	<h1 class="float-left">Create a Contact</h1>
-	<a href="{{ route('listmanager.lists.upload', $list->id) }}" >
+	<a href="" >
 		<button type="button" class="btn btn-lg btn-primary float-right">Upload in Bulk</button>
 	</a>
 	<div class="clearfix"></div>
@@ -41,11 +41,7 @@
 				<div class="form-group">
 					<label for="contactList">Select list(s)</label>
 					<select class="form-control" id="contactList"  value="">
-						@forelse ($lists as $id => $name)
-							<option value="{{ $id }}">{{ $name }}</option>
-						@empty
-							<strong>No list</strong>
-						@endforelse
+						
 					</select>
 				</div>
 			</div>
@@ -67,18 +63,4 @@
 	<p class="pl-3"><em>E.g. 'All Paying Customers'</em></p>
 	<p class=""><strong>List Description:</strong> You can explain where the list came from, or perhaps why the list exists.</p>
 	<p class="pl-3"><em>E.g. 'This is for customer who have actually paid me some money!'</em></p>
-@endsection
-
-@section('main33')
-<div class="row">
-	<div class="col-8">
-		<div class="bg-white rounded border p-3">
-			
-			
-		</div>
-	</div>
-	<div class="col bg-secondary rounded border-dark p-3">
-		
-	</div>
-</div>
 @endsection

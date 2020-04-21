@@ -16,8 +16,8 @@
 			<td>{{ $contact->postal_code }}</td>
 			<td>{{ $contact->getContactStatus() }}</td>
 			<td class="text-right">
-				<a href="{{ route('listmanager.contacts.edit', [$contact->id]) }}">
-					<button class="btn btn-sm btn-primary">EDIT</button>
+				<a href="{{ route('listmanager.contacts.show', [$contact->id]) }}">
+					<button class="btn btn-sm btn-primary">VIEW</button>
 				</a>
 			</td>
 		</tr>

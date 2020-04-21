@@ -1,6 +1,5 @@
 @extends('layouts.master')
 
-
 @section('main')
 <div class="row mb-4">
 	<div class="col-9">

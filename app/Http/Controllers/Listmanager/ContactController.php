@@ -28,12 +28,39 @@ class ContactController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
+        // $view = $this->getStep($request, 3);
+
+        // // Get the collections and return the view for the step
+        // switch ($view) {
+        //     case 2:
+        //         # code...
+        //         break;
+            
+        //     default:
+        //         # code...
+        //         break;
+        // }
         $tags = Tag::all()->pluck('tag_name', 'id');
         $segments = Segment::all()->pluck('segment_name', 'id');
         $lists = ListModel::all()->pluck('list_name', 'id');
         return view('apps.listmanager.contacts.create', compact('tags', 'segments', 'lists'));
+    }
+
+    // Get the step number for the wizard views
+    public function getStep($request, $noOfSteps)
+    {
+        // Get the step passed in the query string. 
+        // Intval turns text into 0. abs makes it positive
+        // The second param of $request->input defaults to 1 if nothing is passed
+        $stepNo = intval( abs( $request->input('step', 1) ) );
+
+        // Make sure number passed is between 1 and $noOfSteps
+        if ( $stepNo == 0 OR $stepNo > $noOfSteps )
+            $stepNo = 1;
+
+        return $stepNo;
     }
 
     /**

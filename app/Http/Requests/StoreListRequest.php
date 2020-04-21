@@ -6,7 +6,7 @@ use App\Listmanager\ListModel;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreUpdateListRequest extends FormRequest
+class StoreListRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

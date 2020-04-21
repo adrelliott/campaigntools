@@ -8,12 +8,13 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-// Import boostrap vue
-import Vue from 'vue'
-import { BootstrapVue } from 'bootstrap-vue'
+// // Import boostrap vue
+// import Vue from 'vue'
+// import { BootstrapVue } from 'bootstrap-vue'
 
 // Install BootstrapVue
-Vue.use(BootstrapVue)
+// Vue.use(BootstrapVue)
+
 // Install the BootstrapVue icon components plugin
 // Vue.use(IconsPlugin)
 

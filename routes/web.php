@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+Route::get('v', 'ViewCreatorController@loadView');
+
+
+
 Auth::routes();
 
 // Define routes for the public
