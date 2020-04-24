@@ -10,8 +10,19 @@ use App\ListModel;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\Traits\WizardTrait;
+
 class ContactController extends Controller
 {
+
+    use WizardTrait;
+
+    public $wizardConfig = [
+        // Method name => Total Steps
+        'create' => 3,
+    ];
+   
+
     /**
      * Display a listing of the resource.
      *
@@ -25,44 +36,48 @@ class ContactController extends Controller
 
     /**
      * Show the form for creating a new resource.
+     * IMPORTANT: Uses method on the wizardTrait
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
-        // $view = $this->getStep($request, 3);
+        // How many steps in this wizard
+        $this->setTotalSteps('create');
+        $this->setCurrentStep();
+        $this->setNavLinks();
 
-        // // Get the collections and return the view for the step
-        // switch ($view) {
-        //     case 2:
-        //         # code...
-        //         break;
+        // Set up the view name and the add the step values to the data array
+        $view = 'apps.listmanager.contacts.wizards.createStep' . $this->currentStep;
+        $data = [
+            'totalSteps' => $this->totalSteps, 
+            'currentStep' => $this->currentStep, 
+            'navigationLinks' => $this->navigationLinks
+        ];
+
+        // Now get the associated data
+        switch ( $this->currentStep ) {
+            case 1:
+                $data['lists'] = ListModel::all()->pluck('list_name', 'id');
+                break;
+
+            case 2:
+                $data['tags'] = Tag::all()->pluck('tag_name', 'id');
+                break;
+
+            case 3:
+                $data['segments'] = Segment::all()->pluck('segment_name', 'id');
+                break;
             
-        //     default:
-        //         # code...
-        //         break;
-        // }
-        $tags = Tag::all()->pluck('tag_name', 'id');
-        $segments = Segment::all()->pluck('segment_name', 'id');
-        $lists = ListModel::all()->pluck('list_name', 'id');
-        return view('apps.listmanager.contacts.create', compact('tags', 'segments', 'lists'));
+            default:
+                # code...
+                break;
+        }
+
+        return view( $view, ['data' => $data] );
     }
 
-    // Get the step number for the wizard views
-    public function getStep($request, $noOfSteps)
-    {
-        // Get the step passed in the query string. 
-        // Intval turns text into 0. abs makes it positive
-        // The second param of $request->input defaults to 1 if nothing is passed
-        $stepNo = intval( abs( $request->input('step', 1) ) );
-
-        // Make sure number passed is between 1 and $noOfSteps
-        if ( $stepNo == 0 OR $stepNo > $noOfSteps )
-            $stepNo = 1;
-
-        return $stepNo;
-    }
-
+    
     /**
      * Store a newly created resource in storage.
      *

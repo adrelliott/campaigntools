@@ -68,11 +68,15 @@ class Contact extends Model
     }
 
 
-
     // ******* DEFINE ACCESSORS/MUTATORS ********
     public function getFullName()
     {
         return ucwords($this->first_name) . ' ' . ucwords($this->last_name);
+    }
+
+    public function getOwnerName()
+    {
+        return $this->organisation->organisation_name;
     }
 
     public function getContactStatus()
@@ -136,13 +140,18 @@ class Contact extends Model
         return $this->morphedByMany(Tag::class, 'contactable')->withTimestamps();
     }
     
-    // Each contact belongs to a segment, and  a segment belongs to one user
-    public function owner()
+    public function organisation()
     {
-        return $this->belongsTo(User::class, 'user_id');
-        // Will add this when we implement the multitenancy
-        // return $this->user_id;
+        return $this->belongsTo(Organisation::class);
     }
+
+    // Each contact belongs to a segment, and  a segment belongs to one user
+    // public function user()
+    // {
+    //     return $this->belongsTo(User::class, 'user_id');
+    //     // Will add this when we implement the multitenancy
+    //     // return $this->user_id;
+    // }
 
     
 

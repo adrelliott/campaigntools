@@ -33,28 +33,33 @@ class ListModel extends Model
     }
 
     // Count contacts & ignore those that are either not verified, or supressed
-    public function getActiveUserCount()
+    public function getTotalContactCount()
     {
-        $activeUsers = $this->getContacts()
-            ->whereNotNull('verified_at')
-            ->whereNull('supressed_at');
-        return $activeUsers->count();
+        return $this->getContacts()->count();
     }
 
-    public function getSuppressedUserCount()
+    public function getActiveContactCount()
     {
-        $activeUsers = $this->getContacts()
+        $activeContacts = $this->getContacts()
+            ->whereNotNull('verified_at')
+            ->whereNull('supressed_at');
+        return $activeContacts->count();
+    }
+
+    public function getSuppressedContactCount()
+    {
+        $activeContacts = $this->getContacts()
             ->whereNotNull('verified_at')
             ->whereNotNull('supressed_at');
-        return $activeUsers->count();
+        return $activeContacts->count();
     }
 
-    public function getUnverifiedUserCount()
+    public function getUnverifiedContactCount()
     {
-        $activeUsers = $this->getContacts()
+        $activeContacts = $this->getContacts()
             ->whereNull('verified_at')
             ->whereNull('supressed_at');
-        return $activeUsers->count();
+        return $activeContacts->count();
     }
 
 

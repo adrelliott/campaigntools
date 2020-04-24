@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class DeleteListRequest extends FormRequest
+class SampleRequestClass extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,6 +13,7 @@ class DeleteListRequest extends FormRequest
      */
     public function authorize()
     {
+        // https://laravel.com/docs/7.x/validation#authorizing-form-requests
         return false;
     }
 
@@ -25,6 +26,19 @@ class DeleteListRequest extends FormRequest
     {
         return [
             //
+        ];
+    }
+
+    /**
+     * Override the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'title.required' => 'A title is required',
+            'body.required'  => 'A message is required',
         ];
     }
 }

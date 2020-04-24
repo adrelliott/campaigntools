@@ -11,5 +11,5 @@
 
 @section('body')
     <p class="text-muted pl-2">{{ $contacts->count() }} contacts found.</p>
-    @include('apps.listmanager.contacts.contactTable')
+    @include('apps.listmanager.contacts.contactsTable')
 @endsection

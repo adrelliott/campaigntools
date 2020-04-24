@@ -1,15 +1,20 @@
-@extends('apps._layouts.withSidebar')
+@extends('apps._layouts.wizardView')
 
  @section('title')
-	<h1 class="float-left">Create a list</h1>
-	<a href="{{ route('listmanager.contacts.create') }}" >
-		<button type="button" class="btn btn-lg btn-primary float-right">Add Contacts</button>
-	</a>
-	<div class="clearfix"></div>
+	Create a list
+@endsection
+
+ @section('subtitle')
+	Follow these 3 simple steps, and you'll have a new list in no time!
+@endsection
+
+ @section('steptitle')
+	Step 1: Name your list
 @endsection
 
 
 @section('body')
+{{ dump($request->input())}}
 	<form method="POST" action="{{ route('listmanager.lists.store') }}" enctype="multipart/form-data">
 		@csrf
 		<div class="form-row">
@@ -40,40 +45,4 @@
 		</div>	
 		<div class="clearfix"></div>
 	</form>
-@endsection
-
-@section('sidebar')
-	<h3 class="">What do I call my list?</h3>
-	<hr>
-	<p class=""><strong>List Name:</strong> Keep it short but descriptive. (Nobody sees this except you).</p>
-	<p class="pl-3"><em>E.g. 'All Paying Customers'</em></p>
-	<p class=""><strong>List Description:</strong> You can explain where the list came from, or perhaps why the list exists.</p>
-	<p class="pl-3"><em>E.g. 'This is for customer who have actually paid me some money!'</em></p>
-	</div>
-@endsection
-
-@section('mainww')
-<div class="row mb-4">
-	<div class="col-9">
-		<div class="bg-white rounded border pl-3 pr-3 pt-4 pb-4">
-			<h1 class="mb-3">Create a List</h1>
-			@if ($errors->any())
-			    <div class="alert alert-danger">
-			        <p class="lead mb-0">Uh oh. Please correct the errors below</p>
-			    </div>
-			@endif
-			
-		</div>
-	</div>
-	<div class="col">
-		<div class="bg-white rounded border p-3">
-			<h3 class="">What do I call my list?</h3>
-			<hr>
-			<p class=""><strong>List Name:</strong> Keep it short but descriptive. (Nobody sees this except you).</p>
-			<p class="pl-3"><em>E.g. 'All Paying Customers'</em></p>
-			<p class=""><strong>List Description:</strong> You can explain where the list came from, or perhaps why the list exists.</p>
-			<p class="pl-3"><em>E.g. 'This is for customer who have actually paid me some money!'</em></p>
-		</div>
-	</div>
-</div>
 @endsection

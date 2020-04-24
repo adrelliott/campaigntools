@@ -8,7 +8,8 @@
   <p><strong>Email:</strong> {{ $contact->email }}</p>
   <hr>
   <h2>Related:</h2>
-  <p><strong>Owner: </strong>{{ $contact->owner->name }}</p>
+  <p><strong>Owner: </strong>{{ $contact->getOwnerName() }}</p>
+
   <h3>Belongs to lists</h3>
   <ol>
   	@forelse($contact->lists as $list)

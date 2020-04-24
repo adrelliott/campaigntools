@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Http\Requests\Listmanager;
- 
-use App\Listmanager\Contact;
+
+use App\Listmanager\ListModel;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreContactRequest extends FormRequest
+class StoreListRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,15 +26,15 @@ class StoreContactRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'list_name' => [
-            //     'required',
-            //     'unique:lists',
-            //     'max:150',
-            //     'min:3'
-            // ],
-            // 'list_description' => [
-            //     'max:255'
-            // ]
+            'list_name' => [
+                'required',
+                'unique:lists',
+                'max:150',
+                'min:3'
+            ],
+            'list_description' => [
+                'max:255'
+            ]
         ];  
     }
 }

@@ -10,15 +10,15 @@
 @endsection
 
 @section('steptitle')
-	Step 1: Which list
+	Step 2: Add your contact
 @endsection
 
 
 @section('body')
-	<form method="POST" action="{{ route('listmanager.lists.store', ['step' => 2]) }}" enctype="multipart/form-data">
+	<form method="POST" action="{{ route('listmanager.contacts.store', ['step' => 2]) }}" enctype="multipart/form-data">
 		@csrf
 		<div class="form-row">
-			<div class="form-group col-md-6">
+			<div class="form-group">
 				<label for="listName">What shall we call your list?</label>
 				<input type="text" 
 					class="form-control form-control-lg @error('list_name') is-invalid @enderror " 
@@ -45,7 +45,7 @@
 					<< {{ $data['navigationLinks']['prev']['name'] }}
 				</a>
 			@endisset
-			<button type="submit" class="btn btn-lg btn-success float-right">
+			<button type="submit" class="btn btn-lg btn-success float-right progress-bar-striped progress-bar-animated">
 				{{ $data['navigationLinks']['next']['name'] }} >>
 			</button>
 		</div>	

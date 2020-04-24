@@ -15,7 +15,7 @@
   	@foreach($users as $user)
 		    <tr>
 		      <th scope="row">{{ $user->id }}</th>
-		      <td><a href="/admin/users/{{ $user->id }}">{{ $user->name }}</a></td>
+		      <td><a href="/admin/users/{{ $user->id }}">{{ $user->fullName() }}</a></td>
           <td>{{ $user->email }}</td>
 		      <td>{{ $user->created_at }}</a></td>
           <td>{{ $user->verified }}</a></td>

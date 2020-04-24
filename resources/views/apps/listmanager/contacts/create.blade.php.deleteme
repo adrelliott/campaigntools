@@ -3,7 +3,7 @@
 
 @section('title')
 	<h1 class="float-left">Create a Contact</h1>
-	<a href="{{ route('listmanager.lists.upload', $list->id) }}" >
+	<a href="{{ route('listmanager.lists.index') }}" >
 		<button type="button" class="btn btn-lg btn-primary float-right">Upload in Bulk</button>
 	</a>
 	<div class="clearfix"></div>
@@ -40,9 +40,9 @@
 			<div class="col">
 				<div class="form-group">
 					<label for="contactList">Select list(s)</label>
-					<select class="form-control" id="contactList"  value="">
+					<select class="form-control" id="contactList"  value="{{ $helper['list_id'] }}">
 						@forelse ($lists as $id => $name)
-							<option value="{{ $id }}">{{ $name }}</option>
+							<option value="{{ $id }}" {{ ($id == $helper['list_id']) ? 'selected' : '' }}>{{ $name }}</option>
 						@empty
 							<strong>No list</strong>
 						@endforelse

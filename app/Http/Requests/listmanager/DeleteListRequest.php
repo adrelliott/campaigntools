@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Listmanager;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateListRequest extends FormRequest
+class DeleteListRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

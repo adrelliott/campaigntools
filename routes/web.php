@@ -86,6 +86,7 @@ Route::group([
 
 	// @todo Route::delete();
 	Route::Resource('users', 'UserController');
+	Route::Resource('organisations', 'OrganisationController');
 });
 
 

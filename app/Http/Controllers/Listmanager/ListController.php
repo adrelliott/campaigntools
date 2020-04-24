@@ -6,8 +6,9 @@ use App\ListModel;
 use App\Category;
 use App\User;
 
-use App\Http\Requests\StoreUpdateListRequest;
-use App\Http\Requests\DeleteListRequest;
+use App\Http\Requests\Listmanager\StoreListRequest;
+use App\Http\Requests\Listmanager\UpdateListRequest;
+use App\Http\Requests\Listmanager\DeleteListRequest;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -33,7 +34,7 @@ class ListController extends Controller
      */
     public function create()
     {
-        return view('apps.listmanager.lists.createWizard');
+        return view('apps.listmanager.lists.create');
         // return view('apps.listmanager.lists.create');
     }
 
@@ -43,7 +44,7 @@ class ListController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreUpdateListRequest $request)
+    public function store(StoreListRequest $request)
     {
         $list = ListModel::create($request->all());
         return redirect(route('listmanager.lists.index'));
@@ -79,7 +80,7 @@ class ListController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreUpdateListRequest $request, ListModel $list)
+    public function update(UpdateListRequest $request, ListModel $list)
     {
         $list->update($request->all());
         return redirect(route('listmanager.lists.index'));

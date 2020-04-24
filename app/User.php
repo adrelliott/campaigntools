@@ -42,6 +42,27 @@ class User extends Authenticatable
         return ($this->email_verified_at) ? "Yes" : "No";
     }
 
+    public function fullName()
+    {
+        // first_name is required when creating a row, so we can be confident it exists
+        $fullName = $this->first_name;
+
+        // Append the last name if it is in the DB
+        if( $this->last_name)
+            $fullName .= ' ' . ucfirst($this->last_name);
+        
+        return $fullName;
+    }
+
+    public function isSuperAdmin()
+    {
+        if ( $this->role()->id == 4 )
+            return boolval(true);
+
+        else
+            return boolval(false);
+    }
+
     
 
 

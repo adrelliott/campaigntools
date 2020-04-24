@@ -13,7 +13,7 @@
 		<tr>
 			<td>{{ $list->list_name }}</td>
 			<td>{{ $list->list_description }}</td>
-			<td>{{ $list->getActiveUserCount() }}</td>
+			<td>{{ $list->getActiveContactCount() }}</td>
 			<td>{{ $list->updated_at }}</td>
 			<td class="text-right">
 				<a href="{{ route('listmanager.lists.edit', [$list->id]) }}">
